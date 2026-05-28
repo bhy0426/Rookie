@@ -1,6 +1,14 @@
-import './App.css'
+import React from 'react';
+import NavigationBar from './components/NavigationBar';
 
-function App() {
+const App: React.FC = () => {
+  const sectionStyle: React.CSSProperties = {
+    minHeight: '100vh',
+    padding: '100px 20px',
+    borderBottom: '1px solid #ccc',
+
+  };
+  
   return (
     <>
     <ul className="nav">
@@ -22,4 +30,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
