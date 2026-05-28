@@ -7,7 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+<<<<<<< HEAD
 node_modules
+=======
+#기본 업로드 제외
+node_modules 
+
+#교수님 지시사항
+package-lock.json 
+
+>>>>>>> CLim020924
 dist
 dist-ssr
 *.local
