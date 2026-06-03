@@ -1,25 +1,36 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavigationBar from './components/NavigationBar';
-import Main from './pages/Main';
-import About from './pages/About';
-import Use from './pages/Use';
-import Connection from './pages/Connection';
-import { Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-const App: React.FC = () => {
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
+
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import Usage from './pages/Usage';
+import Connect from './pages/Connect';
+
+import ProgramStructure1 from './subpages/usage/ProgramStructure1';
+import ProgramStructure2 from './subpages/usage/ProgramStructure2';
+import ProgramStructure3 from './subpages/usage/ProgramStructure3';
+import GrammarDetail from './subpages/grammar/GrammarDetail';
+
+function App() {
   return (
     <>
       <NavigationBar />
-
       <Routes>
-        <Route path="/" element={<Main />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/use" element={<Use />}></Route>
-        <Route path="/connection" element={<Connection />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/usage" element={<Usage />} />
+        <Route path="/usage/1" element={<ProgramStructure1 />} />
+        <Route path="/usage/2" element={<ProgramStructure2 />} />
+        <Route path="/usage/3" element={<ProgramStructure3 />} />
+        <Route path="/grammar/:id" element={<GrammarDetail />} />
+        <Route path="/connect" element={<Connect />} />
       </Routes>
+      <Footer />
     </>
-  )
-};
+  );
+}
 
 export default App;
