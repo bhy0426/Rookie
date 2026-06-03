@@ -1,11 +1,11 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './components/NavigationBar';
 import Main from './pages/Main';
 import About from './pages/About';
 import Use from './pages/Use';
 import Connection from './pages/Connection';
-import { Route, Routes } from 'react-router-dom';
 
 const App: React.FC = () => {
   return (
