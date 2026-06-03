@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
+import Sitemap from './components/Sitemap';
 
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
@@ -28,6 +29,7 @@ function App() {
         <Route path="/grammar/:id" element={<GrammarDetail />} />
         <Route path="/connect" element={<Connect />} />
       </Routes>
+      <Sitemap />
       <Footer />
     </>
   );
