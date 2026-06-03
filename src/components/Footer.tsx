@@ -3,7 +3,10 @@ import icon from "../pic/icon.png";
 const Footer = () => (
   <footer>
   <div className="footer-container">
-    <img src={icon} className="footer-img"></img>
+    <a href="#main">
+      <img src={icon} className="footer-img"></img>
+    </a>
+    {/* <img src={icon} className="footer-img"></img> */}
     <p className="footer-text">© 2026 Rookie. All rights reserved.</p>
     <div className="footer-links">
       <a href="https://suum.pro/" target="_blank">숨(Suum) 공식 홈페이지</a>

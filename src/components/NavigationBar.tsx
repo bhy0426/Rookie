@@ -4,7 +4,7 @@ import '../App.css';
 
 const NavigationBar: React.FC = () => {
   return (
-    <Navbar className="customNav">
+    <Navbar className="customNav" id="main">
       <Container className="d-flex justify-content-center">
         <Navbar.Brand href="/">숨</Navbar.Brand>
         <Nav>
