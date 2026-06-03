@@ -1,25 +1,38 @@
-import React from 'react';
-import NavigationBar from './components/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route } from 'react-router-dom';
 
-const App: React.FC = () => {
-  const sectionStyle: React.CSSProperties = {
-    minHeight: '100vh',
-    padding: '100px 20px',
-    borderBottom: '1px solid #ccc',
-  };
-  
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
+import Sitemap from './components/Sitemap';
+
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import Usage from './pages/Usage';
+import Connect from './pages/Connect';
+
+import ProgramStructure1 from './subpages/usage/ProgramStructure1';
+import ProgramStructure2 from './subpages/usage/ProgramStructure2';
+import ProgramStructure3 from './subpages/usage/ProgramStructure3';
+import GrammarDetail from './subpages/grammar/GrammarDetail';
+
+function App() {
   return (
-    <div>
+    <>
       <NavigationBar />
-      {/* id를 네비게이션 링크와 일치시킴 */}
-      {/*<section id="intro" style={sectionStyle}>*/}
-        
-        <h1>메인 페이지</h1>
-        <p>한글 기반 프로그래밍 언어 "숨"을 소개합니다!</p> 
-      {/*</section>*/}
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/usage" element={<Usage />} />
+        <Route path="/usage/1" element={<ProgramStructure1 />} />
+        <Route path="/usage/2" element={<ProgramStructure2 />} />
+        <Route path="/usage/3" element={<ProgramStructure3 />} />
+        <Route path="/grammar/:id" element={<GrammarDetail />} />
+        <Route path="/connect" element={<Connect />} />
+      </Routes>
+      <Sitemap />
+      <Footer />
+    </>
   );
-};
+}
 
 export default App;
