@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
@@ -10,22 +11,27 @@ import AboutPage from './pages/AboutPage';
 import Usage from './pages/Usage';
 import Connect from './pages/Connect';
 
-import ProgramStructure1 from './subpages/usage/ProgramStructure1';
-import ProgramStructure2 from './subpages/usage/ProgramStructure2';
-import ProgramStructure3 from './subpages/usage/ProgramStructure3';
 import GrammarDetail from './subpages/grammar/GrammarDetail';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/usage" element={<Usage />} />
-        <Route path="/usage/1" element={<ProgramStructure1 />} />
-        <Route path="/usage/2" element={<ProgramStructure2 />} />
-        <Route path="/usage/3" element={<ProgramStructure3 />} />
         <Route path="/grammar/:id" element={<GrammarDetail />} />
         <Route path="/connect" element={<Connect />} />
       </Routes>
