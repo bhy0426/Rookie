@@ -1,31 +1,67 @@
 .customNav { background-color: aliceblue; }
 .customNavLink { font-size: 100pt; }
 footer {
-    background-color: #222222;
-    color: #ffffff;
-    padding: 30px 20px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  
-  .footer-img {
-    width: 70px;
-    height: 100px;
-    margin: 20px;
-  }
-  
-  .footer-disclaimer {
-    color: #aaaaaa;
-    font-size: 12px;
-    margin-top: 10px;
-  }
-  
-  .footer-links a {
-    color: #3498db;
-    text-decoration: none;
-  }
-  
-  .footer-links a:hover {
-    text-decoration: underline;
-  }
+  background-color: #222222;
+  color: #ffffff;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-img {
+  width: 70px;
+  height: 100px;
+  margin: 20px;
+}
+
+.footer-disclaimer {
+  color: #aaaaaa;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 72px;
+  background: white;
+}
+
+.nav-main {
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-panel {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: white;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.navbar.expanded .nav-panel {
+  height: 50vh;
+  opacity: 1;
+  transform: translateY(0);
+}
