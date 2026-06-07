@@ -109,11 +109,26 @@ footer {
 }
 
 .sitemap-list .nav-link {
-  padding: 4px 0;
+  padding: 4px 0; 
   font-size: 14px;
   color: #555;
 }
 
 .sitemap-list .nav-link:hover {
   color: #000;
+}
+
+.nav-panel-col {
+  background-color: red;
+  font-size: 14px;
+  color: #555;
+  margin: 5px;
+
+  text-align: center;
+}
+
+.nav-panel-img {
+  width: 30vw;
+  height: 400px;
+  background-color: green;
 }

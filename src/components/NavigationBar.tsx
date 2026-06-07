@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../App.css';
+import nav_panel_img from "../pic/Rectangle 3.svg";
 
 
 const NavigationBar: React.FC = () => {
@@ -28,8 +29,8 @@ const NavigationBar: React.FC = () => {
       </div>
     </nav>
   );*/}
-    <Container className="nav-main">
-        <Nav className="mx-auto gap-4">
+    <Container fluid className="nav-main">
+        <Nav>
           <Nav.Link as={Link} to="/">
             숨
           </Nav.Link>
@@ -46,30 +47,62 @@ const NavigationBar: React.FC = () => {
       </Container>
 
       <div className="nav-panel">
-        <Container className="py-4">
+        <Container fluid>
           <Row>
-            <Col xs={6} md={3}>
-              <Nav className="flex-column sitemap-list">
-                <Nav.Link as={Link} to="/about">
-                  다른거임 ㅇㅇ
-                </Nav.Link>
-              </Nav>
+            <Col>
+              <img src={nav_panel_img} className="nav-panel-img"></img>
             </Col>
+              <Col>
+                <Row>
+                  <Col className="nav-panel-col">
+                <Nav>
+                  <Nav.Link as={Link} to="/usage">
+                    사ㅁㄴㅇㄹ
+                  </Nav.Link>
+                </Nav>
+              </Col>
 
-            <Col xs={6} md={3}>
-              <Nav className="flex-column sitemap-list">
-                <Nav.Link as={Link} to="/usage">
-                  사ㅁㄴㅇㄹ
-                </Nav.Link>
-              </Nav>
-            </Col>
+              <Col className="nav-panel-col">
+                <Nav>
+                  <Nav.Link as={Link} to="/connect">
+                    연ㅁㄴㅇㄹ
+                  </Nav.Link>
+                </Nav>
+              </Col>
 
-            <Col xs={6} md={3}>
-              <Nav className="flex-column sitemap-list">
-                <Nav.Link as={Link} to="/connect">
-                  연ㅁㄴㅇㄹ
-                </Nav.Link>
-              </Nav>
+              <Col className="nav-panel-col">
+                <Nav>
+                  <Nav.Link as={Link} to="/connect">
+                    연ㅁㄴㅇㄹ
+                  </Nav.Link>
+                </Nav>
+              </Col>
+              </Row>
+              <Row>
+                <Col className="nav-panel-col">
+                <Nav>
+                  <Nav.Link as={Link} to="/usage">
+                    사ㅁㄴㅇㄹ
+                  </Nav.Link>
+                </Nav>
+              </Col>
+
+              <Col className="nav-panel-col">
+                <Nav>
+                  <Nav.Link as={Link} to="/connect">
+                    연ㅁㄴㅇㄹ
+                  </Nav.Link>
+                </Nav>
+              </Col>
+
+              <Col className="nav-panel-col">
+                <Nav>
+                  <Nav.Link as={Link} to="/connect">
+                    연ㅁㄴㅇㄹ
+                  </Nav.Link>
+                </Nav>
+              </Col>
+              </Row>
             </Col>
           </Row>
         </Container>
