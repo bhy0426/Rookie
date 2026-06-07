@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from "react";
-import { Container, Row, Col, Nav } from "react-bootstrap";
+import { Container, /*Row, Col,*/ Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../App.css';
 //import nav_panel_img from "../pic/Rectangle 3.svg";
@@ -67,13 +67,14 @@ const NavigationBar: React.FC = () => {
         </Nav>
       </Container>
 
-      <div className="nav-panel">
-        <div className="nav-preview">
-    <img
-      src={hoveredItem.image}
-      alt={hoveredItem.label}
-      className="nav-preview-img"
-    />
+    {/*여기부터 수정*/}
+    <div className="nav-panel">
+      <div className="nav-preview">
+        <img
+        src={hoveredItem.image}
+        alt={hoveredItem.label}
+        className="nav-preview-img"
+        />
     <p>{hoveredItem.description}</p>
   </div>
 
@@ -89,6 +90,8 @@ const NavigationBar: React.FC = () => {
         {item.label}
       </Link>
     ))}
+    {/*여기까지 수정*/}
+
   </div>
         {/* <Container fluid>
           <Row>
