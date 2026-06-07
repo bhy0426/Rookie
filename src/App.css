@@ -32,18 +32,19 @@ footer {
 
 .about-body {
   background-color: #595959;
-  height: 2000px;
+  height: auto;
   color: white;
 }
 
 .about-head {
-  background-color: rgb(131, 87, 75);
+  /* background-color: rgb(131, 87, 75); */
+  padding-top: 20px;
   /* padding-left: clamp(16px, 10vw, 400px);
   padding-right: clamp(16px, 10vw, 400px); */
 }
 
 .about-head-col {
-  background-color: rgb(55, 64, 92);
+  /* background-color: rgb(55, 64, 92); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,6 +73,7 @@ footer {
   align-items: center;
 
   font-size: 48px;
+  color: #FFE055;
 }
 
 .about-head-img-rect {
@@ -88,4 +90,5 @@ footer {
   align-items: center;
 
   font-size: 24px;
+  color: #FFE055;
 }
