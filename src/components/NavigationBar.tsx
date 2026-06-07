@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from "react";
-//import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Container, Row, Col, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import '../App.css';
 
 
@@ -13,7 +14,7 @@ const NavigationBar: React.FC = () => {
       onMouseEnter={() => setIsExpanded(true)}  //마우스가 네비게이션 바에 들어오면 확장 true
       onMouseLeave={() => setIsExpanded(false)} //마우스가 네비게이션 바에서 나가면 확장 false
     >
-      <div className="nav-main">  
+      {/*<div className="nav-main">  
         <a href="/">숨</a>
         <a href="/about">숨에 관하여</a>
         <a href="/usage">사용</a>
@@ -26,20 +27,56 @@ const NavigationBar: React.FC = () => {
         <a href="/connect">연ㅁㄴㅇㄹ</a>
       </div>
     </nav>
+  );*/}
+    <Container className="nav-main">
+        <Nav className="mx-auto gap-4">
+          <Nav.Link as={Link} to="/">
+            숨
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about">
+            숨에 관하여
+          </Nav.Link>
+          <Nav.Link as={Link} to="/usage">
+            사용
+          </Nav.Link>
+          <Nav.Link as={Link} to="/connect">
+            연결
+          </Nav.Link>
+        </Nav>
+      </Container>
+
+      <div className="nav-panel">
+        <Container className="py-4">
+          <Row>
+            <Col xs={6} md={3}>
+              <Nav className="flex-column sitemap-list">
+                <Nav.Link as={Link} to="/about">
+                  다른거임 ㅇㅇ
+                </Nav.Link>
+              </Nav>
+            </Col>
+
+            <Col xs={6} md={3}>
+              <Nav className="flex-column sitemap-list">
+                <Nav.Link as={Link} to="/usage">
+                  사ㅁㄴㅇㄹ
+                </Nav.Link>
+              </Nav>
+            </Col>
+
+            <Col xs={6} md={3}>
+              <Nav className="flex-column sitemap-list">
+                <Nav.Link as={Link} to="/connect">
+                  연ㅁㄴㅇㄹ
+                </Nav.Link>
+              </Nav>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </nav>
   );
 
-  // return (
-  //   <Navbar className="customNav" id="main">
-  //     <Container className="d-flex justify-content-center">
-  //       <Navbar.Brand href="/">숨</Navbar.Brand>
-  //       <Nav>
-  //         <Nav.Link href="/about">숨에 관하여</Nav.Link>
-  //         <Nav.Link href="/usage">사용</Nav.Link>
-  //         <Nav.Link href="/connect">연결</Nav.Link>
-  //       </Nav>
-  //     </Container>
-  //   </Navbar>
-  // );
 };
 
 export default NavigationBar;
