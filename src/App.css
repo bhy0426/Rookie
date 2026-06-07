@@ -1,4 +1,4 @@
-.customNav { background-color: aliceblue; }
+﻿.customNav { background-color: aliceblue; }
 .customNavLink { font-size: 100pt; }
 footer {
     background-color: #222222;
@@ -83,12 +83,32 @@ footer {
   background-image: url("./pic/about_rect.svg");
   background-repeat: no-repeat;
   background-position: center;
-  /* background-size: 1610px 496px; */
+  background-size: contain;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   font-size: 24px;
+  color: #FFE055;
+}
+
+.about-head-rect-text {
+  color: white;
+}
+
+.about-head-img-diamond {
+  width: 348px;
+  height: 235px;
+
+  background-image: url("./pic/about_diamond.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 48px;
   color: #FFE055;
 }
