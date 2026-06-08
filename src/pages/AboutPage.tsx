@@ -1,5 +1,7 @@
 import "../App.css";
 
+import { useState, useEffect } from "react";
+
 import about_arrow_l from "../pic/about_arrow_l.svg";
 import about_arrow_m from "../pic/about_arrow_m.svg";
 import about_arrow_s from "../pic/about_arrow_s.svg";
@@ -10,6 +12,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const AboutPage: React.FC = () => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        console.log(`안녕하세요 ${count}`);
+    }, [count]);
+
     return(
         <Container fluid className="about-body px-0">
             <Container fluid className="about-head">
@@ -22,7 +30,7 @@ const AboutPage: React.FC = () => {
                         </div>
                     </Col>
                     <Col className="about-head-col">
-                        <div className="about-head-img-input">
+                        <div className="about-head-img-input" onMouseEnter={() => setCount(count+1)}>
                             입력
                         </div>
                     </Col>
