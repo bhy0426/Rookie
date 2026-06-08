@@ -1,4 +1,4 @@
-.customNav { background-color: aliceblue; }
+﻿.customNav { background-color: aliceblue; }
 .customNavLink { font-size: 100pt; }
 footer {
   background-color: #222222;
@@ -165,5 +165,44 @@ footer {
 }
 
 .nav-menu-link:hover {
+  color: #0d6efd;
+}
+
+/* 이하 시험중 */
+.nav-menu-list {
+  width: 70%;
+  height: 100%;
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.nav-menu-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-menu-title {
+  margin-bottom: 8px;
+  color: #222;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-sub-link {
+  color: #666;
+  font-size: 15px;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.nav-menu-title:hover,
+.nav-sub-link:hover {
   color: #0d6efd;
 }

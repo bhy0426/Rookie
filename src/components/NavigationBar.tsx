@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, /*Row, Col,*/ Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../App.css';
+
 //import nav_panel_img from "../pic/Rectangle 3.svg";
 
 const navItems = [
@@ -36,21 +37,7 @@ const NavigationBar: React.FC = () => {
       onMouseEnter={() => setIsExpanded(true)}  //마우스가 네비게이션 바에 들어오면 확장 true
       onMouseLeave={() => setIsExpanded(false)} //마우스가 네비게이션 바에서 나가면 확장 false
     >
-      {/*<div className="nav-main">  
-        <a href="/">숨</a>
-        <a href="/about">숨에 관하여</a>
-        <a href="/usage">사용</a>
-        <a href="/connect">연결</a>
-      </div>
-
-      <div className={`nav-panel ${isExpanded ? "expanded" : ""}`}>
-        <a href="/about">다른거임 ㅇㅇ</a>
-        <a href="/usage">사ㅁㄴㅇㄹ</a>
-        <a href="/connect">연ㅁㄴㅇㄹ</a>
-      </div>
-    </nav>
-  );*/}
-    <Container fluid className="nav-main">
+      <Container fluid className="nav-main">
         <Nav>
           <Nav.Link as={Link} to="/">
             숨
@@ -67,32 +54,97 @@ const NavigationBar: React.FC = () => {
         </Nav>
       </Container>
 
-    {/*여기부터 수정*/}
-    <div className="nav-panel">
-      <div className="nav-preview">
-        <img
-        src={hoveredItem.image}
-        alt={hoveredItem.label}
-        className="nav-preview-img"
-        />
-    <p>{hoveredItem.description}</p>
-  </div>
+      {/* 여기부터 수정*/}
+      <div className="nav-panel">
+        <div className="nav-preview">
+          <img
+            src={hoveredItem.image}
+            alt={hoveredItem.label}
+            className="nav-preview-img"
+          />
+          <p>{hoveredItem.description}</p>
+        </div>
 
-  <div className="nav-menu-list">
-    {
-      navItems.map((item) => (
-      <Link
-        key={item.path}
-        to={item.path}
-        className="nav-menu-link"
-        onMouseEnter={() => setHoveredItem(item)}
-      >
-        {item.label}
-      </Link>
-    ))}
-    {/*여기까지 수정*/}
+        <div className="nav-menu-list">
+          {
+            navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="nav-menu-link"
+                onMouseEnter={() => setHoveredItem(item)}
+              >
+                {item.label}
+              </Link>
+            ))
+          }
+          {/*여기까지 수정 */}
 
-  </div>
+          <div className="nav-menu-list">
+            <div className="nav-menu-group">
+              <Link
+                to="/about"
+                className="nav-menu-title"
+                onMouseEnter={() => setHoveredItem(navItems[0])}
+              >
+                숨에 관하여
+              </Link>
+
+              <Link to="/about" className="nav-sub-link">
+                프로젝트 소개
+              </Link>
+              <Link to="/about/history" className="nav-sub-link">
+                제작 배경
+              </Link>
+            </div>
+
+            <div className="nav-menu-group">
+              <Link
+                to="/usage"
+                className="nav-menu-title"
+                onMouseEnter={() => setHoveredItem(navItems[1])}
+              >
+                사용
+              </Link>
+
+              <Link to="/usage" className="nav-sub-link">
+                사용 메인
+              </Link>
+              <Link to="/usage/structure-1" className="nav-sub-link">
+                프로그램 구성 1
+              </Link>
+              <Link to="/usage/structure-2" className="nav-sub-link">
+                프로그램 구성 2
+              </Link>
+              <Link to="/usage/structure-3" className="nav-sub-link">
+                프로그램 구성 3
+              </Link>
+            </div>
+
+            <div className="nav-menu-group">
+              <Link
+                to="/connect"
+                className="nav-menu-title"
+                onMouseEnter={() => setHoveredItem(navItems[2])}
+              >
+                연결
+              </Link>
+
+              <Link to="/connect" className="nav-sub-link">
+                커뮤니티
+              </Link>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noreferrer"
+                className="nav-sub-link"
+              >
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* <Container fluid>
           <Row>
             <Col>
@@ -155,7 +207,6 @@ const NavigationBar: React.FC = () => {
       </div>
     </nav>
   );
-
 };
 
 export default NavigationBar;
