@@ -1,4 +1,10 @@
-﻿export interface GrammarMember {
+﻿// grammarData.ts는 사용 페이지와 상세 페이지에서 함께 쓰는 문법 데이터 저장소입니다.
+// 이 파일은 화면을 직접 그리는 컴포넌트가 아니라, 1번부터 28번까지의 문법 정보를 배열로 정리합니다.
+// Usage.tsx는 grammarData를 가져와 검색, 분류, 카드 목록, 미리보기에 사용합니다.
+// GrammarDetail.tsx는 grammarData에서 주소의 id와 같은 항목을 찾아 상세 내용을 보여줍니다.
+export interface GrammarMember {
+  // interface(객체 모양 설명)는 TypeScript에서 객체가 어떤 속성을 가져야 하는지 정하는 문법입니다.
+  // GrammarMember는 EditorBlock.tsx의 탭 안에 표시되는 한 줄짜리 정보입니다.
   name: string;
   value?: string;
   kind?: 'variable' | 'function' | 'property' | 'rule';
@@ -6,6 +12,8 @@
 }
 
 export interface EditorContent {
+  // EditorContent는 상세 페이지의 EditorBlock.tsx로 넘기는 전체 데이터 모양입니다.
+  // public, protected, private 배열을 나누어 탭 UI로 보여줍니다.
   name: string;
   summary: string;
   public: GrammarMember[];
@@ -15,6 +23,8 @@ export interface EditorContent {
 }
 
 export interface GrammarItem {
+  // GrammarItem은 문법 카드 하나가 가져야 하는 전체 데이터 모양입니다.
+  // Usage.tsx의 카드, 미리보기와 GrammarDetail.tsx의 상세 페이지가 이 모양을 기준으로 데이터를 사용합니다.
   id: number;
   title: string;
   category: '기본 자료형' | '프로그램 구성' | '객체지향' | '제어문' | '자료형' | '참조/할당';
@@ -28,6 +38,8 @@ export interface GrammarItem {
 }
 
 interface GrammarBaseItem {
+  // GrammarBaseItem은 image가 붙기 전의 기본 데이터 모양입니다.
+  // image는 id 번호를 이용해서 맨 마지막 grammarData에서 자동으로 붙입니다.
   id: number;
   title: string;
   category: '기본 자료형' | '프로그램 구성' | '객체지향' | '제어문' | '자료형' | '참조/할당';
@@ -40,6 +52,9 @@ interface GrammarBaseItem {
 }
 
 const makeContent = (
+  // makeContent는 EditorContent 객체를 쉽게 만들기 위한 보조 함수입니다.
+  // 같은 모양의 content를 28개 항목마다 반복해서 써야 하므로 함수로 묶었습니다.
+  // 발표할 때는 "에디터 탭에 들어갈 데이터를 한 번에 만들어 주는 함수"라고 설명하면 됩니다.
   name: string,
   summary: string,
   publicItems: GrammarMember[],
@@ -47,8 +62,14 @@ const makeContent = (
   privateItems: GrammarMember[] = [],
   warnings: string[] = []
 ): EditorContent => ({ name, summary, public: publicItems, protected: protectedItems, private: privateItems, warnings });
+// : EditorContent는 이 함수가 EditorContent 모양의 객체를 반환한다는 뜻입니다.
+// => 뒤의 ({ ... })는 객체를 바로 return하는 화살표 함수 표현입니다.
+// public: publicItems는 public이라는 속성 이름에 publicItems 매개변수 값을 넣는 코드입니다.
 
 const grammarItems: GrammarBaseItem[] = [
+  // grammarItems는 이미지 경로가 붙기 전의 원본 문법 데이터 배열입니다.
+  // 배열(array)은 여러 데이터를 순서대로 담는 자료구조입니다.
+  // 여기서는 1번부터 28번까지 순서대로 객체가 들어갑니다.
   {
     id: 1,
     title: '기본 자료형',
@@ -461,6 +482,10 @@ const grammarItems: GrammarBaseItem[] = [
 ];
 
 export const grammarData: GrammarItem[] = grammarItems.map((item) => ({
+  // export const grammarData는 다른 파일에서 사용할 수 있도록 완성된 문법 배열을 내보냅니다.
+  // map(배열을 하나씩 바꿔 새 배열을 만드는 함수)은 grammarItems의 항목을 하나씩 꺼내 image 속성을 추가합니다.
+  // item은 현재 처리 중인 문법 객체 하나입니다.
   ...item,
   image: `/src/pic/grammar/${item.id}.png`
 }));
+

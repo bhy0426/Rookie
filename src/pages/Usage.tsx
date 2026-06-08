@@ -1,9 +1,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { grammarData, type GrammarItem } from '../data/grammarData';
+import { grammarData } from '../data/grammarData';
 
-const categories = ['전체', '프로그램 구성', '객체지향', '제어문', '자료형', '기본 자료형', '참조/할당'] as const;
-type CategoryFilter = typeof categories[number];
+const categories: string[] = ['전체', '프로그램 구성', '객체지향', '제어문', '자료형', '기본 자료형', '참조/할당'];
+
+interface GrammarItem {
+  id: number;
+  title: string;
+  category: string;
+  shortcut: string;
+  description: string;
+  image: string;
+}
 
 interface GrammarCardProps {
   item: GrammarItem;
@@ -13,10 +21,10 @@ interface GrammarCardProps {
 
 function GrammarCard({ item, isSelected, onPreview }: GrammarCardProps) {
   return (
-    <article className={isSelected ? 'grammarCard selected' : 'grammarCard'}>
+    <div className={isSelected ? 'grammarCard selected' : 'grammarCard'}>
       <div className="cardMeta">
         <span>{item.category}</span>
-        <kbd>{item.shortcut}</kbd>
+        <span className="shortcutText">{item.shortcut}</span>
       </div>
       <h3>{item.id}. {item.title}</h3>
       <p>{item.description}</p>
@@ -24,19 +32,21 @@ function GrammarCard({ item, isSelected, onPreview }: GrammarCardProps) {
         <button type="button" onClick={() => onPreview(item)}>미리보기</button>
         <Link to={`/grammar/${item.id}`}>상세 보기</Link>
       </div>
-    </article>
+    </div>
   );
 }
 
 export default function Usage() {
   const [searchText, setSearchText] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('전체');
-  const [previewItem, setPreviewItem] = useState<GrammarItem | null>(grammarData[4] ?? grammarData[0]);
+  const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [previewItem, setPreviewItem] = useState<GrammarItem | null>(grammarData[0]);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
-  const previewSectionRef = useRef<HTMLElement | null>(null);
+  const previewSectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    searchInputRef.current?.focus();
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
   }, []);
 
   const filteredGrammar = useMemo(() => {
@@ -54,33 +64,33 @@ export default function Usage() {
     });
   }, [searchText, selectedCategory]);
 
-  const handleCategoryChange = useCallback((category: CategoryFilter) => {
+  const handleCategoryChange = useCallback((category: string) => {
     setSelectedCategory(category);
   }, []);
 
   const handlePreview = useCallback((item: GrammarItem) => {
     setPreviewItem(item);
-    window.setTimeout(() => {
-      previewSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 0);
+    if (previewSectionRef.current) {
+      previewSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }, []);
 
   return (
-    <main className="usagePage">
-      <section className="usageHero">
+    <div className="usagePage">
+      <div className="usageHero">
         <div>
           <p className="eyebrow">숨 가이드</p>
           <h1>숨 언어 배우기</h1>
           <p>문법을 검색하고 예시를 확인하며 숨 언어의 규칙을 하나씩 익혀보세요.</p>
         </div>
-        <aside className="hookPanel">
+        <div className="hookPanel">
           <span>빠른 시작</span>
-          <strong>찾고, 고르고, 바로 확인하기</strong>
+          <h2>찾고, 고르고, 바로 확인하기</h2>
           <p>문법 검색, 카테고리 필터, 미리보기와 상세 예시를 한 화면에서 이용할 수 있습니다.</p>
-        </aside>
-      </section>
+        </div>
+      </div>
 
-      <section className="toolbarSection" aria-label="문법 검색과 필터">
+      <div className="toolbarSection">
         <div className="searchBox">
           <label htmlFor="grammar-search">문법 검색</label>
           <input
@@ -91,7 +101,7 @@ export default function Usage() {
             placeholder="예: 객체, 조건문, Alt + Y"
           />
         </div>
-        <div className="categoryTabs" role="tablist" aria-label="문법 카테고리">
+        <div className="categoryTabs">
           {categories.map((category) => (
             <button
               key={category}
@@ -103,9 +113,9 @@ export default function Usage() {
             </button>
           ))}
         </div>
-      </section>
+      </div>
 
-      <section className="previewSection" ref={previewSectionRef}>
+      <div className="previewSection" ref={previewSectionRef}>
         <div className="previewInfo">
           <p className="eyebrow">미리보기</p>
           <h2>{previewItem ? previewItem.title : '문법 미리보기'}</h2>
@@ -129,9 +139,9 @@ export default function Usage() {
             카드에서 미리보기를 누르면 해당 문법 자료가 표시됩니다. 자세한 단축키와 예시는 상세 보기에서 확인할 수 있습니다.
           </p>
         </div>
-      </section>
+      </div>
 
-      <section className="grammarSection">
+      <div className="grammarSection">
         <div className="sectionTitle">
           <p className="eyebrow">문법 목록</p>
           <h2>숨 언어 문법</h2>
@@ -142,12 +152,12 @@ export default function Usage() {
             <GrammarCard
               key={item.id}
               item={item}
-              isSelected={previewItem?.id === item.id}
+              isSelected={previewItem !== null && previewItem.id === item.id}
               onPreview={handlePreview}
             />
           ))}
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }
