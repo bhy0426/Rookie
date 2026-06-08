@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useState } from "react";
 import { Container, /*Row, Col,*/ Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -79,7 +79,7 @@ const NavigationBar: React.FC = () => {
             ))
           }
           {/*여기까지 수정 */}
-
+          {/* 이하 시험중 */}
           <div className="nav-menu-list">
             <div className="nav-menu-group">
               <Link
