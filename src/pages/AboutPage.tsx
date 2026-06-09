@@ -13,14 +13,15 @@ import Col from 'react-bootstrap/Col';
 
 const AboutPage: React.FC = () => {
     const [count, setCount] = useState(0);
+    const [isEnter, setEnter] = useState<Boolean>(false);
 
     useEffect(() => {
-        console.log(`안녕하세요 ${count}`);
-    }, [count]);
+        console.log(`isEnter: ${isEnter}`);
+    }, [isEnter]);
 
     return(
         <Container fluid className="about-body px-0">
-            <Container fluid className="about-head">
+            <Container fluid className={isEnter ? "about-head" : "about-head-transition"}>
                 <Row>
                     <Col className="about-head-col about-head-text">
                         <div>
@@ -30,7 +31,7 @@ const AboutPage: React.FC = () => {
                         </div>
                     </Col>
                     <Col className="about-head-col">
-                        <div className="about-head-img-input" onMouseEnter={() => setCount(count+1)}>
+                        <div className="about-head-img-input" onMouseEnter={() => setEnter(true)}>
                             입력
                         </div>
                     </Col>
