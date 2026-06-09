@@ -64,84 +64,68 @@ const NavigationBar: React.FC = () => {
           />
           <p>{hoveredItem.description}</p>
         </div>
-
-        <div className="nav-menu-list">
-          {
-            navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="nav-menu-link"
-                onMouseEnter={() => setHoveredItem(item)}
-              >
-                {item.label}
-              </Link>
-            ))
-          }
-          {/*여기까지 수정 */}
           {/* 이하 시험중 */}
-          <div className="nav-menu-list">
-            <div className="nav-menu-group">
-              <Link
-                to="/about"
-                className="nav-menu-title"
-                onMouseEnter={() => setHoveredItem(navItems[0])}
-              >
-                숨에 관하여
-              </Link>
+        <div className="nav-menu-list">
+          <div className="nav-menu-group">
+            <Link
+              to="/about"
+              className="nav-menu-title"
+              onMouseEnter={() => setHoveredItem(navItems[0])}
+            >
+              숨에 관하여
+            </Link>
 
-              <Link to="/about" className="nav-sub-link">
-                프로젝트 소개
-              </Link>
-              <Link to="/about/history" className="nav-sub-link">
-                제작 배경
-              </Link>
-            </div>
+            <Link to="/about" className="nav-sub-link">
+              프로젝트 소개
+            </Link>
+            <Link to="/about/history" className="nav-sub-link">
+              제작 배경
+            </Link>
+          </div>
 
-            <div className="nav-menu-group">
-              <Link
-                to="/usage"
-                className="nav-menu-title"
-                onMouseEnter={() => setHoveredItem(navItems[1])}
-              >
-                사용
-              </Link>
+          <div className="nav-menu-group">
+            <Link
+              to="/usage"
+              className="nav-menu-title"
+              onMouseEnter={() => setHoveredItem(navItems[1])}
+            >
+              사용
+            </Link>
 
-              <Link to="/usage" className="nav-sub-link">
-                사용 메인
-              </Link>
-              <Link to="/usage/structure-1" className="nav-sub-link">
-                프로그램 구성 1
-              </Link>
-              <Link to="/usage/structure-2" className="nav-sub-link">
-                프로그램 구성 2
-              </Link>
-              <Link to="/usage/structure-3" className="nav-sub-link">
-                프로그램 구성 3
-              </Link>
-            </div>
+            <Link to="/usage" className="nav-sub-link">
+              사용 메인
+            </Link>
+            <Link to="/usage/structure-1" className="nav-sub-link">
+              프로그램 구성 1
+            </Link>
+            <Link to="/usage/structure-2" className="nav-sub-link">
+              프로그램 구성 2
+            </Link>
+            <Link to="/usage/structure-3" className="nav-sub-link">
+              프로그램 구성 3
+            </Link>
+          </div>
 
-            <div className="nav-menu-group">
-              <Link
-                to="/connect"
-                className="nav-menu-title"
-                onMouseEnter={() => setHoveredItem(navItems[2])}
-              >
-                연결
-              </Link>
+          <div className="nav-menu-group">
+            <Link
+              to="/connect"
+              className="nav-menu-title"
+              onMouseEnter={() => setHoveredItem(navItems[2])}
+            >
+              연결
+            </Link>
 
-              <Link to="/connect" className="nav-sub-link">
-                커뮤니티
-              </Link>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                className="nav-sub-link"
-              >
-                YouTube
-              </a>
-            </div>
+            <Link to="/connect" className="nav-sub-link">
+              커뮤니티
+            </Link>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-sub-link"
+            >
+              YouTube
+            </a>
           </div>
         </div>
 
