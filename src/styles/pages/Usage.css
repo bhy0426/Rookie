@@ -48,7 +48,7 @@
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid var(--suum-border);
   background: rgba(255, 255, 255, 0.42);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(2px);
 }
 
 .usageStats div {
@@ -87,7 +87,7 @@
   border-top: 1px solid var(--suum-border-dark);
   border-bottom: 1px solid var(--suum-border-dark);
   background: rgba(247, 247, 244, 0.22);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(2px);
 }
 
 .usageStep {
@@ -133,11 +133,18 @@
 }
 
 .usageControlPanel,
-.usagePreviewPanel,
-.grammarBrowser {
+.usagePreviewPanel {
   border: 1px solid var(--suum-border);
   background: rgba(255, 255, 255, 0.38);
-  backdrop-filter: blur(13px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.grammarBrowser {
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .usageControlPanel {
@@ -406,7 +413,8 @@
 
 .grammarList {
   display: grid;
-  border-top: 1px solid var(--suum-border-dark);
+  gap: 10px;
+  border-top: 0;
 }
 
 .grammarRow {
@@ -418,7 +426,9 @@
   min-height: 82px;
   border: 0;
   border-bottom: 1px solid var(--suum-border);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(2px);
   color: var(--suum-text);
   padding: 12px 0;
   text-align: left;
@@ -427,7 +437,7 @@
 
 .grammarRow:hover,
 .grammarRow.active {
-  background: rgba(255, 255, 255, 0.26);
+  background: rgba(81, 57, 57, 0.26);
 }
 
 .grammarNumber {
