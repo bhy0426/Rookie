@@ -12,16 +12,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const AboutPage: React.FC = () => {
-    const [count, setCount] = useState(0);
     const [isEnter, setEnter] = useState<Boolean>(false);
 
     useEffect(() => {
+        setEnter(true);
         console.log(`isEnter: ${isEnter}`);
-    }, [isEnter]);
+    }, []);
 
     return(
         <Container fluid className="about-body px-0">
-            <Container fluid className={isEnter ? "about-head" : "about-head-transition"}>
+            <Container fluid className={isEnter ? "about-head-transition" : "about-head"}>
                 <Row>
                     <Col className="about-head-col about-head-text">
                         <div>

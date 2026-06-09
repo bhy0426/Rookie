@@ -37,14 +37,20 @@ footer {
 }
 
 .about-head {
-  background-color: rgb(131, 87, 75);
+  /* background-color: rgb(131, 87, 75); */
   padding-top: 20px;
-  /* padding-left: clamp(16px, 10vw, 400px);
-  padding-right: clamp(16px, 10vw, 400px); */
+  /* padding-left: clamp(16px, 15vw, 400px);
+  padding-right: clamp(16px, 15vw, 400px); */
+  opacity: 0;
 }
 
 .about-head-transition {
-  transform: translateY(-10px);
+  transform: translateY(100px);
+  transition-property: opacity transform;
+  transition-duration: 2s;
+
+  /* padding-left: clamp(16px, 15vw, 400px);
+  padding-right: clamp(16px, 15vw, 400px); */
 }
 
 .about-head-col {
@@ -55,11 +61,11 @@ footer {
 }
 
 .about-head-text {
-  font-size: 40px;
+  font-size: 32px;
 }
 
 .about-head-title {
-  font-size: 64px;
+  font-size: 58px;
   font-weight: 700;
 }
 
@@ -87,7 +93,7 @@ footer {
   background-image: url("./pic/about_rect.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: auto;
 
   display: flex;
   justify-content: center;
