@@ -115,13 +115,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
 
   return (
     <nav
-      ref={navRef}
-      className={`navbar ${isExpanded ? "expanded" : ""} ${
-        isHidden || forceHidden ? "hidden" : ""
-      }`}
-      onMouseEnter={openNavbar}
-      onMouseLeave={closeNavbar}
-    >
+  className={`navbar ${isExpanded ? "expanded" : ""} ${isHidden || forceHidden ? "hidden" : ""}`}
+  onMouseLeave={closeNavbar}
+>
       <div className="nav-main suum-container">
         <Link to="/" className="nav-brand" aria-label="숨 홈으로 이동">
           <span className="nav-brand-mark">숨</span>
@@ -137,7 +133,10 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
               key={group.path}
               to={group.path}
               className={pathname === group.path ? "active" : ""}
-              onMouseEnter={() => setHoveredGroup(group)}
+              onMouseEnter={() => {
+                setHoveredGroup(group);
+                openNavbar();
+              }}
             >
               {group.label}
             </Link>
