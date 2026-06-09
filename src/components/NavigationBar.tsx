@@ -37,7 +37,7 @@ const NavigationBar: React.FC = () => {
       onMouseEnter={() => setIsExpanded(true)}  //마우스가 네비게이션 바에 들어오면 확장 true
       onMouseLeave={() => setIsExpanded(false)} //마우스가 네비게이션 바에서 나가면 확장 false
     >
-      <Container fluid className="nav-main">
+      <Container fluid className="nav-main"> {/* navbar 메인부분, 없애면 사라지고 디자인 넣을 예정(수정예정) */}
         <Nav>
           <Nav.Link as={Link} to="/">
             숨
@@ -54,7 +54,6 @@ const NavigationBar: React.FC = () => {
         </Nav>
       </Container>
 
-      {/* 여기부터 수정*/}
       <div className="nav-panel">
         <div className="nav-preview">
           <img
@@ -87,7 +86,7 @@ const NavigationBar: React.FC = () => {
             <Link
               to="/usage"
               className="nav-menu-title"
-              onMouseEnter={() => setHoveredItem(navItems[1])}
+              onMouseEnter={() => setHoveredItem(navItems[1])} //마우스가 사용 텍스트에 들어오면 hoveredItem을 navItems[1]로 설정, 이거로 다른거도 수정 가능
             >
               사용
             </Link>
@@ -129,7 +128,7 @@ const NavigationBar: React.FC = () => {
           </div>
         </div>
 
-        {/* <Container fluid>
+        {/* <Container fluid> //이거 쓸건지 안쓸건진 모르겠는데 암튼 남겨둠
           <Row>
             <Col>
               <img src={nav_panel_img} className="nav-panel-img"></img>
