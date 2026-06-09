@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+﻿import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/components/NavigationBar.css";
 
@@ -126,8 +126,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
         <Link to="/" className="nav-brand" aria-label="숨 홈으로 이동">
           <span className="nav-brand-mark">숨</span>
           <span>
-            <strong>숨</strong>
-            <small>SUUM</small>
+            <strong>ㅅㅜㅁ</strong>
+            <small>  S U U M</small>
           </span>
         </Link>
 
