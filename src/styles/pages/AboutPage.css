@@ -12,6 +12,7 @@
   padding: 87px 0 84px;
   background: transparent;
 
+
   opacity: 1;
   transform: translateY(0);
 
@@ -21,22 +22,41 @@
   transition-timing-function: ease;
 }
 
+.aboutHero-upper {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
 .aboutHero {
-  display: grid;
+  /* display: grid; */
+  /* background-color: rgb(255, 69, 193); */
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 48px;
   align-items: center;
-  padding: 56px 0 42px;
+  /* padding: 56px 0 42px; */
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+
+  transition-property: transform opacity;
+  transition-duration: 1.5s;
+  /* transition-delay: 2s; */
+  transition-timing-function: ease;
 }
 
 .aboutHero h1 {
-  max-width: 820px;
+  /* background-color: rgb(87, 255, 137); */
+  /* max-width: 820px; */
   margin: 12px 0 18px;
   color: var(--suum-text);
   font-size: clamp(38px, 6vw, 66px);
   font-weight: 850;
-  letter-spacing: -0.055em;
+  /* letter-spacing: -0.055em; */
   line-height: 1.25;
+  text-align: center;
+}
+
+.aboutHero h1 span {
+  color: var(--suum-accent);
 }
 
 .aboutHero p:not(.eyebrow),
@@ -86,7 +106,12 @@
 .aboutFlow,
 .aboutContent,
 .aboutPhilosophy {
-  margin-top: 24px;
+  margin-top: 74px;
+}
+
+.aboutContent span,
+.aboutPhilosophy span {
+  color: var(--suum-accent);
 }
 
 .sectionHeader {
@@ -100,7 +125,7 @@
   color: var(--suum-text);
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 850;
-  letter-spacing: -0.035em;
+  /* letter-spacing: -0.035em; */
 }
 
 .flowGrid {
@@ -141,19 +166,21 @@
 }
 
 .aboutContent {
-  display: grid;
-  grid-template-columns: 0.88fr 1.12fr;
+  /* display: grid; */
+  /* grid-template-columns: 0.88fr 1.12fr; */
   gap: 18px;
-  align-items: stretch;
+  text-align: center;
+  /* align-items: stretch; */
 }
 
 .aboutTextBox,
 .featureCard,
 .aboutPhilosophy {
-  border: 1px solid var(--suum-border);
+  /* border: 1px solid var(--suum-border);
   border-radius: var(--suum-radius);
-  background: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.52); */
   box-shadow: none;
+  text-align: center;
 }
 
 .aboutTextBox,
@@ -216,6 +243,24 @@
 .featureCard,
 .aboutFlow {
   /* background: rgba(255, 255, 255, 0.8); */
-  background-color: rgba(245, 247, 250, 1);
+  /* background-color: rgba(245, 247, 250, 1); */
   backdrop-filter: blur(1px);
+}
+
+.about-arrow-hidden {
+  opacity: 0;
+}
+
+.about-arrow-visible {
+  transition-property: opacity;
+  transition-duration: 2s;
+}
+
+.about-content-hidden {
+  opacity: 0;
+}
+
+.about-content-visible {
+  transition-property: opacity;
+  transition-duration: 1s;
 }
