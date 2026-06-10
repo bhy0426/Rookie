@@ -1,0 +1,220 @@
+.aboutPage-upper {
+  min-height: 100vh;
+  padding: 12px 0 84px;
+  background-color: mintcream;
+  opacity: 0;
+  transform: translateY(-30px);
+  /* background: transparent; */
+}
+
+.aboutPage {
+  min-height: 100vh;
+  padding: 87px 0 84px;
+  background: transparent;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-property: transform opacity;
+  transition-duration: 1.5s;
+  transition-delay: 2s;
+  transition-timing-function: ease;
+}
+
+.aboutHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 48px;
+  align-items: center;
+  padding: 56px 0 42px;
+}
+
+.aboutHero h1 {
+  max-width: 820px;
+  margin: 12px 0 18px;
+  color: var(--suum-text);
+  font-size: clamp(38px, 6vw, 66px);
+  font-weight: 850;
+  letter-spacing: -0.055em;
+  line-height: 1.25;
+}
+
+.aboutHero p:not(.eyebrow),
+.aboutTextBox p,
+.aboutPhilosophy p,
+.featureCard p {
+  color: var(--suum-muted);
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.aboutHeroCard {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  border: 1px solid var(--suum-border);
+  border-radius: var(--suum-radius);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: none;
+}
+
+.aboutHeroCard span {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 4px;
+  background: rgba(17, 17, 17, 0.94);
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.aboutHeroCard strong {
+  color: var(--suum-text);
+  font-size: 24px;
+  letter-spacing: 0.08em;
+}
+
+.aboutHeroCard small {
+  color: var(--suum-muted);
+  font-weight: 800;
+}
+
+.aboutFlow,
+.aboutContent,
+.aboutPhilosophy {
+  margin-top: 24px;
+}
+
+.sectionHeader {
+  margin-bottom: 16px;
+}
+
+.sectionHeader h2,
+.aboutTextBox h2,
+.aboutPhilosophy h2 {
+  margin: 8px 0 12px;
+  color: var(--suum-text);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+
+.flowGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.flowItem {
+  position: relative;
+  min-height: 140px;
+  padding: 20px;
+  border: 1px solid var(--suum-border);
+  border-radius: var(--suum-radius);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.flowItem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  width: 20px;
+  height: 1px;
+  background: var(--suum-border-dark);
+}
+
+.flowItem span {
+  display: block;
+  color: var(--suum-accent);
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+
+.flowItem strong {
+  color: var(--suum-text);
+  font-size: 24px;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.aboutTextBox,
+.featureCard,
+.aboutPhilosophy {
+  border: 1px solid var(--suum-border);
+  border-radius: var(--suum-radius);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: none;
+}
+
+.aboutTextBox,
+.aboutPhilosophy {
+  padding: 28px;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.featureCard {
+  padding: 22px;
+  box-shadow: none;
+}
+
+.featureCard h3 {
+  margin: 0 0 8px;
+  color: var(--suum-text);
+  font-size: 21px;
+  font-weight: 850;
+}
+
+.featureCard p,
+.aboutTextBox p,
+.aboutPhilosophy p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .aboutHero,
+  .aboutContent {
+    grid-template-columns: 1fr;
+  }
+
+  .flowGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flowItem::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .aboutPage {
+    padding: 36px 0 64px;
+  }
+
+  .flowGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aboutHeroCard,
+.aboutTextBox,
+.aboutPhilosophy,
+.featureCard,
+.aboutFlow {
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(9px);
+}

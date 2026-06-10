@@ -1,0 +1,45 @@
+.connectPage {
+  min-height: 70vh;
+  padding: 120px 0 120px;
+  background: transparent;
+}
+
+.connectHero {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--suum-border);
+  border-radius: var(--suum-radius);
+  background: rgba(255, 255, 255, 0.52);
+  padding: clamp(28px, 6vw, 64px);
+  box-shadow: none;
+}
+
+.connectHero h1 {
+  margin: 12px 0 14px;
+  color: var(--suum-text);
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 850;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.connectHero p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0;
+  color: var(--suum-muted);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.connectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.connectHero {
+  backdrop-filter: blur(9px);
+}

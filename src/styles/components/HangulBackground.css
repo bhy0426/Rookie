@@ -1,0 +1,10 @@
+.hangulBackground {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(15, 118, 110, 0.055), transparent 28%),
+    radial-gradient(circle at 82% 12%, rgba(29, 78, 216, 0.05), transparent 26%),
+    linear-gradient(180deg, #f7f7f4 0%, #f1f2ee 100%);
+}
