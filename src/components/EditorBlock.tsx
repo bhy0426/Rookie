@@ -1,5 +1,7 @@
 ﻿import { useMemo, useState } from 'react';
 
+import '../styles/components/EditorBlock.css';
+
 interface GrammarMember {
   name: string;
   value?: string;

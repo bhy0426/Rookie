@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../styles/components/Sitemap.css';
 
 const FooterSitemap: React.FC = () => {
   return (
