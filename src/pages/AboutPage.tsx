@@ -34,7 +34,7 @@ const AboutPage: React.FC = () => {
       <main className={isEnter ?  "aboutPage" : "aboutPage-upper"}>
       <section className="aboutHero suum-container">
         <div>
-          <p className="eyebrow">ABOUT SUUM</p>
+          <p className="eyebrow"></p>
           <h1>숨은 순서도로 프로그램을 구성하는 비주얼 프로그래밍 언어입니다.</h1>
           <p>
             숨이라는 이름에는 숨 쉬듯 자연스럽고 쉬운 프로그래밍 언어라는 의미가 담겨 있습니다.
@@ -48,14 +48,14 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="aboutFlow suum-container">
+      <section className="suum-container">
         <div className="sectionHeader">
-          <p className="eyebrow">FLOW</p>
+          <p className="eyebrow"></p>
           <h2>숨이 프로그램을 구성하는 방식</h2>
         </div>
         <div className="flowGrid">
           {flowItems.map((item, index) => (
-            <div className="flowItem" key={item}>
+            <div className="aboutFlow  flowItem" key={item}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{item}</strong>
             </div>

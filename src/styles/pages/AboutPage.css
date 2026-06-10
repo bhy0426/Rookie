@@ -17,7 +17,7 @@
 
   transition-property: transform opacity;
   transition-duration: 1.5s;
-  transition-delay: 2s;
+  /* transition-delay: 2s; */
   transition-timing-function: ease;
 }
 
@@ -118,7 +118,7 @@
   background: rgba(255, 255, 255, 0.52);
 }
 
-.flowItem:not(:last-child)::after {
+/* .flowItem:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -126,7 +126,7 @@
   width: 20px;
   height: 1px;
   background: var(--suum-border-dark);
-}
+} */
 
 .flowItem span {
   display: block;
@@ -215,6 +215,7 @@
 .aboutPhilosophy,
 .featureCard,
 .aboutFlow {
-  background: rgba(255, 255, 255, 0.52);
-  backdrop-filter: blur(9px);
+  /* background: rgba(255, 255, 255, 0.8); */
+  background-color: rgba(245, 247, 250, 1);
+  backdrop-filter: blur(1px);
 }
