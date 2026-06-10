@@ -1,4 +1,18 @@
 import icon from "../pic/icon.png";
+import "../styles/components/Footer.css";
+
+const handleFooterClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  event.preventDefault();
+
+  if (window.location.pathname === "/") {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else {
+    window.location.href = "/";
+  }
+};
 
 const handleFooterClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();

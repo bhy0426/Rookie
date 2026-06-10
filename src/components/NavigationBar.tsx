@@ -1,192 +1,204 @@
-﻿import React from 'react';
-import { useState } from "react";
-import { Container, /*Row, Col,*/ Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import '../App.css';
+﻿import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "../styles/components/NavigationBar.css";
 
-//import nav_panel_img from "../pic/Rectangle 3.svg";
-
-const navItems = [
+const navGroups = [
   {
     label: "숨에 관하여",
     path: "/about",
     image: "/images/about-preview.png",
-    description: "숨 프로젝트의 목적과 방향을 소개합니다.",
+    description: "숨의 목적, 특징, 개발 철학을 소개합니다.",
+    links: [
+      { label: "프로젝트 소개", path: "/about" },
+      { label: "언어 특징", path: "/about" },
+    ],
   },
   {
-    label: "사용",
+    label: "사용하기",
     path: "/usage",
     image: "/images/usage-preview.png",
-    description: "프로그램 사용법과 구성 방법을 확인할 수 있습니다.",
+    description: "문법 검색, 예시 화면, 상세 설명을 확인합니다.",
+    links: [
+      { label: "사용 메인", path: "/usage" },
+      { label: "문법 목록", path: "/usage" },
+    ],
   },
   {
     label: "연결",
     path: "/connect",
     image: "/images/connect-preview.png",
-    description: "커뮤니티와 외부 채널로 연결됩니다.",
+    description: "공식 페이지와 프로젝트 저장소로 이동합니다.",
+    links: [
+      { label: "연결 메인", path: "/connect" },
+      { label: "공식 홈페이지", path: "https://suum.pro/", external: true },
+    ],
   },
 ];
 
-const NavigationBar: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false); //useState를 사용해서 네비게이션 바의 확장 여부를 관리
-  const [hoveredItem, setHoveredItem] = useState(navItems[0]); //useState를 사용해서 텍스트 위에 마우스 여부를 관리
+type NavigationBarProps = {
+  forceHidden?: boolean;
+};
+
+const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) => {
+  const { pathname } = useLocation();
+
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isHidden, setIsHidden] = useState<boolean>(false);
+  const [hoveredGroup, setHoveredGroup] = useState(navGroups[0]);
+
+  const navRef = useRef<HTMLElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
+
+  const openNavbar = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+
+    setIsHidden(false);
+    setIsExpanded(true);
+  };
+
+  const closeNavbar = (event: React.MouseEvent<HTMLElement | HTMLDivElement>) => {
+    const nextTarget = event.relatedTarget as Node | null;
+
+    const isMovingToNavbar = nextTarget !== null && navRef.current?.contains(nextTarget);
+    const isMovingToPanel = nextTarget !== null && panelRef.current?.contains(nextTarget);
+
+    if (isMovingToNavbar || isMovingToPanel) {
+      return;
+    }
+
+    closeTimerRef.current = window.setTimeout(() => {
+      setIsExpanded(false);
+    }, 180);
+  };
+
+  useEffect(() => {
+    setIsExpanded(false);
+    setIsHidden(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleWheel = (event: WheelEvent) => {
+      if (isExpanded) {
+        setIsHidden(false);
+        return;
+      }
+
+      if (event.deltaY > 0) {
+        setIsHidden(true);
+        return;
+      }
+
+      if (event.deltaY < 0) {
+        setIsHidden(false);
+      }
+    };
+
+    const handleScroll = () => {
+      if (pathname !== "/" && window.scrollY <= 0) {
+        setIsHidden(false);
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("scroll", handleScroll);
+
+      if (closeTimerRef.current !== null) {
+        window.clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, [isExpanded, pathname]);
 
   return (
     <nav
-      className={`navbar ${isExpanded ? "expanded" : ""}`}
-      onMouseEnter={() => setIsExpanded(true)}  //마우스가 네비게이션 바에 들어오면 확장 true
-      onMouseLeave={() => setIsExpanded(false)} //마우스가 네비게이션 바에서 나가면 확장 false
-    >
-      <Container fluid className="nav-main"> {/* navbar 메인부분, 없애면 사라지고 디자인 넣을 예정(수정예정) */}
-        <Nav>
-          <Nav.Link as={Link} to="/">
-            숨
-          </Nav.Link>
-          <Nav.Link as={Link} to="/about">
-            숨에 관하여
-          </Nav.Link>
-          <Nav.Link as={Link} to="/usage">
-            사용
-          </Nav.Link>
-          <Nav.Link as={Link} to="/connect">
-            연결
-          </Nav.Link>
-        </Nav>
-      </Container>
+  className={`navbar ${isExpanded ? "expanded" : ""} ${isHidden || forceHidden ? "hidden" : ""}`}
+  onMouseLeave={closeNavbar}
+>
+      <div className="nav-main suum-container">
+        <Link to="/" className="nav-brand" aria-label="숨 홈으로 이동">
+          <span className="nav-brand-mark">숨</span>
+          <span>
+            <strong>ㅅㅜㅁ</strong>
+            <small>  S U U M</small>
+          </span>
+        </Link>
 
-      <div className="nav-panel">
-        <div className="nav-preview">
-          <img
-            src={hoveredItem.image}
-            alt={hoveredItem.label}
-            className="nav-preview-img"
-          />
-          <p>{hoveredItem.description}</p>
+        <div className="nav-links" aria-label="주요 메뉴">
+          {navGroups.map((group) => (
+            <Link
+              key={group.path}
+              to={group.path}
+              className={pathname === group.path ? "active" : ""}
+              onMouseEnter={() => {
+                setHoveredGroup(group);
+                openNavbar();
+              }}
+            >
+              {group.label}
+            </Link>
+          ))}
         </div>
-          {/* 이하 시험중 */}
-        <div className="nav-menu-list">
-          <div className="nav-menu-group">
-            <Link
-              to="/about"
-              className="nav-menu-title"
-              onMouseEnter={() => setHoveredItem(navItems[0])}
-            >
-              숨에 관하여
-            </Link>
+      </div>
 
-            <Link to="/about" className="nav-sub-link">
-              프로젝트 소개
-            </Link>
-            <Link to="/about/history" className="nav-sub-link">
-              제작 배경
-            </Link>
+      <div
+        ref={panelRef}
+        className="nav-panel"
+        onMouseEnter={openNavbar}
+        onMouseLeave={closeNavbar}
+      >
+        <div className="suum-container nav-panel-inner">
+          <div className="nav-preview">
+            <p className="eyebrow">MENU</p>
+            <h2>{hoveredGroup.label}</h2>
+            <p>{hoveredGroup.description}</p>
           </div>
+          
+          {/* 이하수정중 */}
+          <div className="nav-menu-list">
+            {navGroups.map((group) => (
+              <div
+                key={group.path}
+                className="nav-menu-group"
+                onMouseEnter={() => setHoveredGroup(group)}
+              >
+                <Link to={group.path} className="nav-menu-title">
+                  {group.label}
+                </Link>
 
-          <div className="nav-menu-group">
-            <Link
-              to="/usage"
-              className="nav-menu-title"
-              onMouseEnter={() => setHoveredItem(navItems[1])} //마우스가 사용 텍스트에 들어오면 hoveredItem을 navItems[1]로 설정, 이거로 다른거도 수정 가능
-            >
-              사용
-            </Link>
-
-            <Link to="/usage" className="nav-sub-link">
-              사용 메인
-            </Link>
-            <Link to="/usage/structure-1" className="nav-sub-link">
-              프로그램 구성 1
-            </Link>
-            <Link to="/usage/structure-2" className="nav-sub-link">
-              프로그램 구성 2
-            </Link>
-            <Link to="/usage/structure-3" className="nav-sub-link">
-              프로그램 구성 3
-            </Link>
-          </div>
-
-          <div className="nav-menu-group">
-            <Link
-              to="/connect"
-              className="nav-menu-title"
-              onMouseEnter={() => setHoveredItem(navItems[2])}
-            >
-              연결
-            </Link>
-
-            <Link to="/connect" className="nav-sub-link">
-              커뮤니티
-            </Link>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noreferrer"
-              className="nav-sub-link"
-            >
-              YouTube
-            </a>
+                <div className="nav-menu-sub-list">
+                  {group.links.map((link) =>
+                    link.external ? (
+                      <a
+                        key={link.label}
+                        href={link.path}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="nav-sub-link"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={link.label}
+                        to={link.path}
+                        className="nav-sub-link"
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* <Container fluid> //이거 쓸건지 안쓸건진 모르겠는데 암튼 남겨둠
-          <Row>
-            <Col>
-              <img src={nav_panel_img} className="nav-panel-img"></img>
-            </Col>
-              <Col>
-                <Row>
-                  <Col className="nav-panel-col">
-                <Nav>
-                  <Nav.Link as={Link} to="/usage">
-                    사ㅁㄴㅇㄹ
-                  </Nav.Link>
-                </Nav>
-              </Col>
-
-              <Col className="nav-panel-col">
-                <Nav>
-                  <Nav.Link as={Link} to="/connect">
-                    연ㅁㄴㅇㄹ
-                  </Nav.Link>
-                </Nav>
-              </Col>
-
-              <Col className="nav-panel-col">
-                <Nav>
-                  <Nav.Link as={Link} to="/connect">
-                    연ㅁㄴㅇㄹ
-                  </Nav.Link>
-                </Nav>
-              </Col>
-              </Row>
-              <Row>
-                <Col className="nav-panel-col">
-                <Nav>
-                  <Nav.Link as={Link} to="/usage">
-                    사ㅁㄴㅇㄹ
-                  </Nav.Link>
-                </Nav>
-              </Col>
-
-              <Col className="nav-panel-col">
-                <Nav>
-                  <Nav.Link as={Link} to="/connect">
-                    연ㅁㄴㅇㄹ
-                  </Nav.Link>
-                </Nav>
-              </Col>
-
-              <Col className="nav-panel-col">
-                <Nav>
-                  <Nav.Link as={Link} to="/connect">
-                    연ㅁㄴㅇㄹ
-                  </Nav.Link>
-                </Nav>
-              </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Container> */}
       </div>
     </nav>
   );
