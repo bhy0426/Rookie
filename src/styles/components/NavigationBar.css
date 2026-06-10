@@ -125,7 +125,7 @@
 }
 
 .navbar.expanded .nav-panel {
-  height: 178px;
+  height: 40vh;
   opacity: 1;
   transform: translateY(0);
 }
@@ -133,7 +133,7 @@
 .nav-panel-inner {
   height: 100%;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 30% 1fr;
   gap: 36px;
   align-items: center;
   padding-top: 24px;
@@ -161,10 +161,10 @@
 }
 
 .nav-menu-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  align-items: flex-start;
 }
 
 .nav-sub-link {
@@ -209,4 +209,28 @@
     display: none;
     top: 64px;
   }
+}
+
+/* 이하 수정중 */
+.nav-menu-group {
+  min-width: 0;
+}
+
+.nav-menu-title {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--suum-text);
+  font-size: 17px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.nav-menu-title:hover {
+  color: var(--suum-text);
+}
+
+.nav-menu-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

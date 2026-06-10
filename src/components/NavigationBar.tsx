@@ -6,6 +6,7 @@ const navGroups = [
   {
     label: "숨에 관하여",
     path: "/about",
+    image: "/images/about-preview.png",
     description: "숨의 목적, 특징, 개발 철학을 소개합니다.",
     links: [
       { label: "프로젝트 소개", path: "/about" },
@@ -15,6 +16,7 @@ const navGroups = [
   {
     label: "사용하기",
     path: "/usage",
+    image: "/images/usage-preview.png",
     description: "문법 검색, 예시 화면, 상세 설명을 확인합니다.",
     links: [
       { label: "사용 메인", path: "/usage" },
@@ -24,6 +26,7 @@ const navGroups = [
   {
     label: "연결",
     path: "/connect",
+    image: "/images/connect-preview.png",
     description: "공식 페이지와 프로젝트 저장소로 이동합니다.",
     links: [
       { label: "연결 메인", path: "/connect" },
@@ -156,25 +159,44 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
             <h2>{hoveredGroup.label}</h2>
             <p>{hoveredGroup.description}</p>
           </div>
-
+          
+          {/* 이하수정중 */}
           <div className="nav-menu-list">
-            {hoveredGroup.links.map((link) =>
-              link.external ? (
-                <a
-                  key={link.label}
-                  href={link.path}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="nav-sub-link"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link key={link.label} to={link.path} className="nav-sub-link">
-                  {link.label}
+            {navGroups.map((group) => (
+              <div
+                key={group.path}
+                className="nav-menu-group"
+                onMouseEnter={() => setHoveredGroup(group)}
+              >
+                <Link to={group.path} className="nav-menu-title">
+                  {group.label}
                 </Link>
-              )
-            )}
+
+                <div className="nav-menu-sub-list">
+                  {group.links.map((link) =>
+                    link.external ? (
+                      <a
+                        key={link.label}
+                        href={link.path}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="nav-sub-link"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={link.label}
+                        to={link.path}
+                        className="nav-sub-link"
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
