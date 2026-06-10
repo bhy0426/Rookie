@@ -163,7 +163,7 @@
 .nav-menu-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
+  gap: clamp(18px, 4vw, 44px);
   align-items: flex-start;
 }
 
@@ -214,6 +214,8 @@
 /* 이하 수정중 */
 .nav-menu-group {
   min-width: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-menu-title {
@@ -230,6 +232,8 @@
 }
 
 .nav-menu-sub-list {
+  width: 100%;
+  max-width: 238px;
   display: flex;
   flex-direction: column;
   gap: 8px;

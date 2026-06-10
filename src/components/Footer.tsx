@@ -14,19 +14,6 @@ const handleFooterClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
   }
 };
 
-const handleFooterClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-  event.preventDefault();
-
-  if (window.location.pathname === "/") {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  } else {
-    window.location.href = "/";
-  }
-};
-
 const Footer = () => (
   <footer>
   <div className="footer-container">

@@ -168,10 +168,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                 className="nav-menu-group"
                 onMouseEnter={() => setHoveredGroup(group)}
               >
-                <Link to={group.path} className="nav-menu-title">
-                  {group.label}
-                </Link>
-
                 <div className="nav-menu-sub-list">
                   {group.links.map((link) =>
                     link.external ? (
