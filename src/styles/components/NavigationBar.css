@@ -25,11 +25,9 @@
 
 .nav-main {
   position: relative;
-  height: 68px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 34% 22% 22% 22%;
   align-items: center;
-  justify-content: flex-start;
-  gap: 24px;
 }
 
 .nav-brand {
@@ -71,10 +69,11 @@
 }
 
 .nav-links {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+  position: static;
+  transform: none;
+  grid-column: 2 / 5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: clamp(18px, 4vw, 44px);
 }

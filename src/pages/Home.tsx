@@ -6,25 +6,25 @@ let hasHomeIntroPlayed = false;
 
 const homeSections = [
   {
-    eyebrow: "SUUM LANGUAGE",
+    eyebrow: "숨 언어",
     title: "한글로 생각하고, 흐름으로 프로그래밍하다.",
     description:
       "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다.",
-    code: ["시작:", "  변수 이름을 \"숨\"이라고 정하기", "  출력하기(\"안녕하세요, \" + 이름)", "끝!"],
+      image: "/홈-숨언어간단소개이미지.png",
     primaryLabel: "사용해보기",
     primaryPath: "/usage",
     secondaryLabel: "숨에 관하여",
     secondaryPath: "/about",
   },
   {
-    eyebrow: "VISUAL FLOW",
+    eyebrow: "흐름 보기",
     title: "입력, 판단, 실행을 한눈에 따라갑니다.",
     description:
       "텍스트만 나열하는 방식이 아니라 프로그램의 구조를 구역과 흐름으로 보여주어 처음 배우는 사람도 실행 순서를 놓치지 않게 합니다.",
     points: ["순서도 중심의 구조", "키보드 기반 입력", "오류를 줄이는 작성 방식"],
   },
   {
-    eyebrow: "GUIDE PAGE",
+    eyebrow: "설명과 이해",
     title: "문법을 찾고, 예시를 보고, 바로 이해합니다.",
     description:
       "사용 페이지에서는 숨의 문법을 검색하고 상세 예시를 확인할 수 있습니다. 각 문법은 실제 화면 자료와 함께 정리됩니다.",
@@ -226,13 +226,13 @@ function Home({ setHomeNavHidden }: HomeProps) {
             </div>
 
             <div className="home-visual" aria-hidden="true">
-              {section.code ? (
-                <div className="home-code-card">
-                  <div className="home-code-header">
-                    <span>예시 코드</span>
-                    <span>suum</span>
-                  </div>
-                  <pre>{section.code.join("\n")}</pre>
+              {section.image ? (
+                <div className="home-image-card">
+                  <img
+                    src={section.image}
+                    alt={section.title}
+                    className="home-main-image"
+                  />
                 </div>
               ) : sectionIndex === 2 ? (
                 <div className="home-search-demo">
