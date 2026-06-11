@@ -26,7 +26,7 @@
 .nav-main {
   position: relative;
   display: grid;
-  grid-template-columns: 34% 22% 22% 22%;
+  grid-template-columns: 69% 6% 17% 9%;
   align-items: center;
 }
 
@@ -132,7 +132,7 @@
 .nav-panel-inner {
   height: 100%;
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 65% 1fr;
   gap: 36px;
   padding-top: 20px;
   padding-bottom: 24px;
@@ -172,11 +172,9 @@
   align-items: center;
   min-height: 42px;
   padding: 0 16px;
-  border: 1px solid var(--suum-border);
-  border-radius: 4px;
   background: transparent;
   color: var(--suum-text);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 750;
   text-decoration: none;
 }
