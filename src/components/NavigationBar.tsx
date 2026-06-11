@@ -118,9 +118,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
 
   return (
     <nav
-  className={`headerNav ${isExpanded ? "expanded" : ""} ${isHidden || forceHidden ? "hidden" : ""}`}
-  onMouseLeave={closeNavbar}
->
+      className={`navbar ${isExpanded ? "expanded" : ""} ${isHidden || forceHidden ? "hidden" : ""}`}
+      onMouseLeave={closeNavbar}
+    >
       <div className="nav-main suum-container">
         <Link to="/" className="nav-brand" aria-label="숨 홈으로 이동">
           <span className="nav-brand-mark">숨</span>
