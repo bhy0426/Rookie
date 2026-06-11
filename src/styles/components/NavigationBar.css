@@ -33,7 +33,7 @@
 .nav-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--suum-text);
 }
 

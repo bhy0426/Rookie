@@ -118,7 +118,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
 
   return (
     <nav
-  className={`navbar ${isExpanded ? "expanded" : ""} ${isHidden || forceHidden ? "hidden" : ""}`}
+  className={`headerNav ${isExpanded ? "expanded" : ""} ${isHidden || forceHidden ? "hidden" : ""}`}
   onMouseLeave={closeNavbar}
 >
       <div className="nav-main suum-container">
@@ -155,18 +155,22 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
       >
         <div className="suum-container nav-panel-inner">
           <div className="nav-preview">
+            <img
+              src={hoveredGroup.image}
+              alt={hoveredGroup.label}
+              className="nav-preview-image"
+            />
             <p className="eyebrow">MENU</p>
             <h2>{hoveredGroup.label}</h2>
             <p>{hoveredGroup.description}</p>
           </div>
           
-          {/* 이하수정중 */}
+          {/* 이하수정중 */} 
           <div className="nav-menu-list">
             {navGroups.map((group) => (
               <div
                 key={group.path}
                 className="nav-menu-group"
-                onMouseEnter={() => setHoveredGroup(group)}
               >
                 <div className="nav-menu-sub-list">
                   {group.links.map((link) =>
@@ -177,6 +181,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                         target="_blank"
                         rel="noreferrer"
                         className="nav-sub-link"
+                        onMouseEnter={() => setHoveredGroup(group)}
                       >
                         {link.label}
                       </a>
@@ -185,6 +190,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                         key={link.label}
                         to={link.path}
                         className="nav-sub-link"
+                        onMouseEnter={() => setHoveredGroup(group)}
                       >
                         {link.label}
                       </Link>
