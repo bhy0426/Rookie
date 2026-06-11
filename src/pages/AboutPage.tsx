@@ -1,5 +1,5 @@
 import "../styles/pages/AboutPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import about_down_arrow from "../pic/down-arrow.png"
 
 const featureItems = [
@@ -23,8 +23,40 @@ const AboutPage: React.FC = () => {
   const [isEnter, setIsEnter] = useState<Boolean>(false);
   const [isVisibleArrow, setIsVisibleArrow] = useState<Boolean>(false);
   const [isVisibleContent, setIsVisibleContent] = useState<Boolean>(false);
-
+  const heroRef = useRef<HTMLElement | null>(null);
+  
   useEffect(() => {
+
+  }, [])
+
+  // heroRef 변수가 변경되면 호출
+  useEffect(() => {
+    // console.log(`isEnter : ${isEnter}`);
+    // console.log(`isVisibleArrow : ${isVisibleArrow}`);
+    // console.log(`rect.top : ${rect.top}`);
+  }, [heroRef])
+
+  // aboutHero 섹션 스크롤 고정 및 아래로 이동, 매프레임
+  useEffect(() => {
+    if(!heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    console.log(`rect.top : ${rect.top}`);
+  })
+
+  // 타이틀 JSX 배열
+  const titles = [
+    <>영어가 너무 어려워.. <span>한글</span>로 된 언어는 없을까?</>,
+    <>코드를 <span>그림</span>으로 표현할 수는 없을까?</>,
+    <><span>숨</span>은 이렇게 탄생했습니다.</>,
+  ];
+
+  // 타이틀 인덱스
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  // 컴포넌트가 처음 불러올 때
+  useEffect(() => {
+    
+    // 시작 애니메이션
     setIsEnter(true);
 
     setTimeout(() => {
@@ -34,23 +66,54 @@ const AboutPage: React.FC = () => {
     setTimeout(() => {
       setIsVisibleContent(true);
     }, 3000);
-  }, [])
 
-  useEffect(() => {
-    // console.log(`isEnter : ${isEnter}`);
-    console.log(`isVisibleArrow : ${isVisibleArrow}`);
-  }, [isVisibleArrow])
+    // 스크롤 함수
+    // heroRef
+    const onScroll = () => {
+      if (!heroRef.current) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      // const scrollable = rect.height - window.innerHeight;
+
+      // const progress = Math.min(
+      //   1,
+      //   Math.max(0, -rect.top / scrollable)
+      // );
+
+      // const nextIndex = Math.min(
+      //   titles.length - 1,
+      //   Math.floor(progress * titles.length)
+      // );
+
+      // setTitleIndex(nextIndex);
+      console.log(rect.top);
+    };
+
+    // scroll(마우스 스크롤) 이벤트가 발생하면 onScroll 함수 호출
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+
+    // 컴포넌트가 내려가면
+    return () => {
+      // scroll 이벤트에 등록된 onScroll 함수 제거
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+
+
+
 
   return (
     // <main className="aboutPage">
       <main className="aboutPage">
-      <section className={`${isEnter ? "aboutHero" : "aboutHero-upper"} suum-container`}>
+      <section ref={heroRef} className={`${isEnter ? "aboutHero" : "aboutHero-upper"} suum-container`}>
         <div>
           {/* <p className="eyebrow"></p> */}
           {/* <h1>숨은<br/><span>순서도</span>로 프로그램을 구성하는<br/>비주얼 프로그래밍 언어입니다.</h1> */}
-          <h1>영어 너무 어려워.. <span>한글</span>로 된 언어는 없을까?</h1>
-          <h1>코드를 <span>그림</span>으로 표현할 수는 없을까?</h1>
-          <h1><span>숨</span>은 이렇게 탄생했습니다.</h1>
+          {/* <h1>영어가 너무 어려워.. <span>한글</span>로 된 언어는 없을까?</h1> */}
+          <h1>{titles[titleIndex]}</h1>
+          {/* <h1>코드를 <span>그림</span>으로 표현할 수는 없을까?</h1>
+          <h1><span>숨</span>은 이렇게 탄생했습니다.</h1> */}
           {/* <p>
             숨이라는 이름에는 숨 쉬듯 자연스럽고 쉬운 프로그래밍 언어라는 의미가 담겨 있습니다.
             한글 표현과 시각적 흐름을 함께 사용해 처음 배우는 사람도 프로그램의 구조를 이해할 수 있도록 설계되었습니다.
@@ -64,7 +127,7 @@ const AboutPage: React.FC = () => {
 
       </section>
       <section className={`${isVisibleArrow ? "about-arrow-visible" : "about-arrow-hidden"} d-flex justify-content-center align-items-center pt-5 pb-5`}>
-        <img className="w-40" src={about_down_arrow} />
+        <img src={about_down_arrow} />
       </section>
       {/* <section className="suum-container">
         <div className="sectionHeader">

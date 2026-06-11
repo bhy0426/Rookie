@@ -25,6 +25,7 @@
 
 .nav-main {
   position: relative;
+  background-color: red;
   height: 68px;
   display: flex;
   align-items: center;

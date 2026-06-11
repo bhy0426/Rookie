@@ -117,25 +117,25 @@ function Home({ setHomeNavHidden }: HomeProps) {
       const isFirstSection = current === 0;
 
       event.preventDefault();
-
+      
       if (isScrollUp) {
         setHomeNavHidden(false);
       }
-
+      
       if (isScrollDown) {
         setHomeNavHidden(true);
       }
 
       if (wheelLockRef.current) return;
-
+      
       if ((isScrollDown && isLastSection) || (isScrollUp && isFirstSection)) return;
-
+      
       wheelLockRef.current = true;
-
+      
       const nextSection = isScrollDown ? current + 1 : current - 1;
       currentSectionRef.current = nextSection;
       setCurrentSection(nextSection);
-
+      
       window.setTimeout(() => {
         wheelLockRef.current = false;
       }, 980);
