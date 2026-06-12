@@ -54,29 +54,21 @@ const AboutPage: React.FC = () => {
     // 휠 조작 시 호출되는 onScroll 함수
     // event.deltaY : 스크롤 위로 -100, 스크롤 아래로 100
     const onScroll = (event: WheelEvent) => {
-
-      // event.preventDefault();
-
       const wheelUp = event.deltaY < 0; // 휠을 위로 움직이는지 체크
       const wheelDown = event.deltaY > 0; // 휠을 아래로 움직이는지 체크
 
       // console.log("wheelUp : " + wheelUp);
-      console.log("wheelDown : " + wheelDown);
-      
-      //console.log("titleIndex : " + titleIndex);
+      // console.log("wheelDown : " + wheelDown);
 
-      // 휠을 아래로 내리면
-      if(wheelDown) {
-        if(wheelRef.current)
-          setTitleIndex((prev) => prev + 1);
-      }
-      // 휠을 위로 올리면
-      if(wheelUp) {
-        if(wheelRef.current)
-          setTitleIndex((prev) => prev - 1);
+      // 휠이 잠겨있으면
+      if(wheelRef.current) {
+        // 휠을 아래로 내리면
+        if(wheelDown) setTitleIndex((prev) => prev + 1); // 인덱스 1 증가
+        // 휠을 위로 올리면
+        else if(wheelUp) setTitleIndex((prev) => prev - 1); // 인덱스 1 감소
       }
 
-      // 인덱스가 배열 끝이 아니면
+      // 휠 잠금이 참이면
       if(wheelRef.current) event.preventDefault(); // 스크롤 잠금
       else return;
     };
@@ -96,7 +88,7 @@ const AboutPage: React.FC = () => {
   // titleIndex값이 변경될 때
   useEffect(() => {
     // console.log(wheelY.current);
-    console.log("titleIndex : " + titleIndex);
+    // console.log("titleIndex : " + titleIndex);
 
     // 인덱스가 배열 길이와 같으면 스크롤 잠금 해제
     // 5일 때 해제
@@ -126,7 +118,7 @@ const AboutPage: React.FC = () => {
       break;
     case 5:
       setH1Class("aboutHero-third")
-      setIsVisibleContent(true);
+      setIsVisibleContent(true); // aboutContent 요소 
       console.log(h1Class);
       break;
     }
