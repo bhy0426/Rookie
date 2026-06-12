@@ -27,6 +27,8 @@ const navGroups = [
     description: "공식 페이지와 프로젝트 저장소로 이동합니다.",
     links: [
       { label: "연결 메인", path: "/connect" },
+      { label: "스팀 페이지", path: "https://store.steampowered.com/app/3594080/Suum/", external: true },
+      { label: "유튜브 페이지", path: "https://www.youtube.com/@suumlang", external: true },
       { label: "공식 홈페이지", path: "https://suum.pro/", external: true },
     ],
   },

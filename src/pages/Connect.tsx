@@ -15,6 +15,14 @@ export default function Connect() {
             깃허브 보기
           </a>
         </div>
+        <div className="connectLinks"> 
+          <a className="suum-button-outline" href="https://www.youtube.com/@suumlang" target="_blank" rel="noreferrer">
+            공식 유튜브
+          </a>
+          <a className="suum-button" href="https://store.steampowered.com/app/3594080/Suum/" target="_blank" rel="noreferrer">
+            스팀 페이지
+          </a>
+        </div>
       </section>
     </main>
   );
