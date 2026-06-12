@@ -1,7 +1,6 @@
 .aboutPage-upper {
   min-height: 100vh;
   padding: 12px 0 84px;
-  background-color: mintcream;
   opacity: 0;
   transform: translateY(-30px);
   /* background: transparent; */
@@ -11,7 +10,6 @@
   min-height: 100vh;
   padding: 87px 0 84px;
   background: transparent;
-
 
   opacity: 1;
   transform: translateY(0);
@@ -29,7 +27,7 @@
 
 .aboutHero {
   /* display: grid; */
-  background-color: rgb(255, 69, 193);
+  /* background-color: rgb(255, 69, 193); */
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 48px;
   align-items: center;
@@ -37,10 +35,10 @@
   padding-top: 30vh;
   padding-bottom: 30vh;
 
-  transition-property: transform opacity;
-  transition-duration: 1.5s;
+  /* transition-property: transform opacity;
+  transition-duration: 1.5s; */
   /* transition-delay: 2s; */
-  transition-timing-function: ease;
+  /* transition-timing-function: ease; */
 }
 
 .aboutHero h1 {
@@ -53,6 +51,40 @@
   /* letter-spacing: -0.055em; */
   line-height: 1.25;
   text-align: center;
+}
+
+.aboutHero-idle {
+  opacity: 0;
+}
+
+.aboutHero-first {
+  /* background-color: rgb(51, 255, 0); */
+  opacity: 1;
+  transform: translateY(0);
+  transition-property: transform opacity;
+  transition-duration: 1.5s;
+  /* transition-delay: 2s; */
+  transition-timing-function: ease;
+}
+
+.aboutHero-second {
+  /* background-color: purple; */
+  opacity: 1;
+  transform: translateY(0);
+  transition-property: transform opacity;
+  transition-duration: 1.5s;
+  /* transition-delay: 2s; */
+  transition-timing-function: ease;
+}
+
+.aboutHero-third {
+  /* background-color: pink; */
+  opacity: 1;
+  transform: translateY(0);
+  transition-property: transform opacity;
+  transition-duration: 1.5s;
+  /* transition-delay: 2s; */
+  transition-timing-function: ease;
 }
 
 .aboutHero h1 span {
@@ -106,7 +138,7 @@
 .aboutFlow,
 .aboutContent,
 .aboutPhilosophy {
-  margin-top: 74px;
+  margin-top: 200px;
 }
 
 .aboutContent span,
@@ -166,12 +198,22 @@
 }
 
 .aboutContent {
-  /* display: grid; */
-  /* grid-template-columns: 0.88fr 1.12fr; */
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: 18px;
   /* text-align: center; */
   /* align-items: stretch; */
+  /* background-color: magenta; */
 }
+
+.aboutImg {
+  background-color: rgb(255, 238, 0);
+  width: 400px;
+  height: 100%;
+  margin: auto;
+  color: black;
+}
+
 .aboutTextBox,
 .featureCard,
 .aboutPhilosophy {
@@ -260,6 +302,5 @@
 }
 
 .about-content-visible {
-  transition-property: opacity;
-  transition-duration: 1s;
+  transition: opacity 2s ease 1s;
 }
