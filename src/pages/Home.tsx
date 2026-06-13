@@ -41,25 +41,25 @@ const homeSections = [
     variant: "connect",
     cards: [
       {
-        title: "숨에 관하여",
-        image: "/images/home-card-about.png",
+        title: "스팀 페이지",
+        image: "/images/Steam.png",
         description:
-          "숨 프로젝트의 목적과 특징, 개발 철학을 소개합니다.",
-        path: "/about",
+          "숨의 스팀 판매 홈페이지로 이동합니다.\n숨의 구매 및 업데이트 소식을\n확인할 수 있습니다.",
+        path: "https://store.steampowered.com/app/3594080/Suum/",
       },
       {
-        title: "사용하기",
-        image: "/images/home-card-usage.png",
+        title: "숨 유튜브 채널",
+        image: "/images/youtube.png",
         description:
-          "문법 검색, 미리보기, 상세 학습 흐름을 확인합니다.",
-        path: "/usage",
+          "숨의 공식 유튜브 채널로 이동합니다.\n숨의 강의 영상을 시청 할 수 있습니다.",
+        path: "https://www.youtube.com/@suumlang",
       },
       {
-        title: "연결",
-        image: "/images/home-card-connect.png",
+        title: "공식 홈페이지",
+        image: "/images/Suumpage.png",
         description:
-          "공식 페이지와 외부 채널로 이동할 수 있습니다.",
-        path: "/connect",
+          "숨의 공식 홈페이지로 이동합니다. 자세한 정보 및 업데이트 소식을\n확인 할 수 있습니다.",
+        path: "https://suum.pro/",
       },
     ],
   },
@@ -259,7 +259,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
               {section.cards ? (
                 <div className="home-card-grid">
                   {section.cards.map((card) => (
-                    <Link key={card.title} to={card.path} className="home-link-card">
+                    <Link key={card.title} to={card.path} target="_blank" rel="noopener noreferrer" className="home-link-card">
                       <img src={card.image} alt={card.title} />
                       <div className="home-link-card-body">
                         <h3>{card.title}</h3>
