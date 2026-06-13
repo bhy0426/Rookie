@@ -76,6 +76,10 @@
   transform: translateY(0);
 }
 
+.home-description { /* 줄 바꿈 코드*/
+  white-space: pre-line;
+}
+
 .home-code-card,
 .home-flow-card {
   width: 100%;
@@ -224,6 +228,14 @@
 
 .home-section:nth-of-type(3)::before {
   background: rgba(245, 245, 241, 0.26);
+}
+.home-section:has(.home-card-grid) .home-section-inner { /* 4번째 섹션 레이아웃 조정 */
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.home-section:has(.home-card-grid) .home-copy {
+  max-width: 720px;
 }
 
 .home-section-inner,
@@ -393,4 +405,60 @@
   .home-search-input {
     font-size: 19px;
   }
+}
+
+/* 4번째 구역 이미지 카드 */
+.home-card-grid {
+  width: min(100%, 900px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 auto;
+}
+
+.home-link-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  border: 1px solid rgba(20, 20, 20, 0.2);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.home-link-card:hover {
+  transform: translateY(-4px);
+  border-color: #111;
+  color: #fff;
+}
+
+.home-link-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.home-link-card-body {
+  flex: 1;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-link-card-body h3 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  font-weight: 850;
+}
+
+.home-link-card-body p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
 }

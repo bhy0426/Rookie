@@ -41,20 +41,22 @@
 .nav-brand-mark {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border: 1px solid #111111;
   border-radius: 4px;
   background: #111111;
   color: #ffffff;
-  font-size: 19px;
+  font-size: 28px;
   font-weight: 900;
+  font-family: 'KccHwanGi';
 }
 
 .nav-brand strong,
 .nav-brand small {
   display: block;
   line-height: 1.08;
+  font-family: 'OmuDaye';
 }
 
 .nav-brand strong {

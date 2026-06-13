@@ -6,7 +6,7 @@ let hasHomeIntroPlayed = false;
 
 const homeSections = [
   {
-    eyebrow: "숨 언어",
+    eyebrow: "숨 이란?",
     title: "한글로 생각하고, 흐름으로 프로그래밍하다.",
     description:
       "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다.",
@@ -32,6 +32,36 @@ const homeSections = [
     primaryPath: "/usage",
     secondaryLabel: "연결 페이지",
     secondaryPath: "/connect",
+  },
+  {
+    eyebrow: "외부 연결 페이지",
+    title: "숨과 관련된 다양한 페이지로 이동합니다.",
+    description:
+      "스팀, 유튜브, 공식 홈페이지와 깃허브로 이동하여 \n숨에 관한 다양한 정보를 수집해보세요.",
+      image: "/유튜브,공식홈페이지,깃허브.png",
+    cards: [
+      {
+        title: "숨에 관하여",
+        image: "/images/home-card-about.png",
+        description:
+          "숨 프로젝트의 목적과 특징, 개발 철학을 소개합니다.",
+        path: "/about",
+      },
+      {
+        title: "사용하기",
+        image: "/images/home-card-usage.png",
+        description:
+          "문법 검색, 미리보기, 상세 학습 흐름을 확인합니다.",
+        path: "/usage",
+      },
+      {
+        title: "연결",
+        image: "/images/home-card-connect.png",
+        description:
+          "공식 페이지와 외부 채널로 이동할 수 있습니다.",
+        path: "/connect",
+      },
+    ],
   },
 ];
 
@@ -226,7 +256,19 @@ function Home({ setHomeNavHidden }: HomeProps) {
             </div>
 
             <div className="home-visual" aria-hidden="true">
-              {section.image ? (
+              {section.cards ? (
+                <div className="home-card-grid">
+                  {section.cards.map((card) => (
+                    <Link key={card.title} to={card.path} className="home-link-card">
+                      <img src={card.image} alt={card.title} />
+                      <div className="home-link-card-body">
+                        <h3>{card.title}</h3>
+                        <p>{card.description}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : section.image ? (
                 <div className="home-image-card">
                   <img
                     src={section.image}

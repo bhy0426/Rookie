@@ -93,7 +93,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
         <Link to="/" className="nav-brand" aria-label="숨 홈으로 이동">
           <span className="nav-brand-mark">숨</span>
           <span>
-            <strong>ㅅㅜㅁ</strong>
+            <strong>ㅅ ㅜ ㅁ</strong>
             <small>  S U U M</small>
           </span>
         </Link>
@@ -153,6 +153,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                         rel="noreferrer"
                         className="nav-sub-link"
                         onMouseEnter={() => setHoveredGroup(group)}
+                        onClick={closeNavbar}
                       >
                         {link.label}
                       </a>
@@ -163,6 +164,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                         to={link.path}
                         className="nav-sub-link"
                         onMouseEnter={() => setHoveredGroup(group)}
+                        onClick={closeNavbar}
                       >
                         {link.label}
                       </Link>

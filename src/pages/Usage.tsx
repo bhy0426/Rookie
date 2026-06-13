@@ -116,7 +116,7 @@ function Usage() {
         ))}
       </section>
 
-      <section className="usageWorkbench" ref={previewSectionRef}>
+      <section id="search" className="usageWorkbench" ref={previewSectionRef}>
         <aside className="usageControlPanel">
           <div className="usageSearchBox">
             <label htmlFor="grammar-search">문법 검색</label>
@@ -193,7 +193,7 @@ function Usage() {
         <EditorBlock data={previewItem.content} />
       </section>
 
-      <section className="grammarBrowser">
+      <section id="grammar" className="grammarBrowser">
         <div className="browserHeader">
           <div>
             <p className="eyebrow">BROWSE</p>
