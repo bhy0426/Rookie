@@ -15,6 +15,44 @@
   background: transparent;
 }
 
+.home-section-main { /* 메인섹션 레이아웃 조정 */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 104px 24px 56px;
+  border-bottom: 1px solid var(--suum-border);
+  background: transparent;
+}
+
+.home-section-main-inner {
+  width: min(var(--suum-page-width), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  gap: clamp(32px, 7vw, 92px);
+  align-items: center;
+}
+
+.home-section-main { /* 연결섹션 레이아웃 조정 */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 104px 24px 56px;
+  border-bottom: 1px solid var(--suum-border);
+  background: transparent;
+}
+
+.home-section-main-inner {
+  width: min(var(--suum-page-width), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  gap: clamp(32px, 7vw, 92px);
+  align-items: center;
+}
+
 .home-section:nth-of-type(2),
 .home-section:nth-of-type(3) {
   background: transparent;

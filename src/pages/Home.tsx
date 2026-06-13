@@ -11,10 +11,7 @@ const homeSections = [
     description:
       "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다.",
       image: "/홈-숨언어간단소개이미지.png",
-    primaryLabel: "사용해보기",
-    primaryPath: "/usage",
-    secondaryLabel: "숨에 관하여",
-    secondaryPath: "/about",
+    variant: "main",
   },
   {
     eyebrow: "흐름 보기",
@@ -22,6 +19,7 @@ const homeSections = [
     description:
       "텍스트만 나열하는 방식이 아니라 프로그램의 구조를 구역과 흐름으로 보여주어 처음 배우는 사람도 실행 순서를 놓치지 않게 합니다.",
     points: ["순서도 중심의 구조", "키보드 기반 입력", "오류를 줄이는 작성 방식"],
+    variant: "search",
   },
   {
     eyebrow: "설명과 이해",
@@ -32,6 +30,7 @@ const homeSections = [
     primaryPath: "/usage",
     secondaryLabel: "연결 페이지",
     secondaryPath: "/connect",
+    variant: "usage",
   },
   {
     eyebrow: "외부 연결 페이지",
@@ -39,6 +38,7 @@ const homeSections = [
     description:
       "스팀, 유튜브, 공식 홈페이지와 깃허브로 이동하여 \n숨에 관한 다양한 정보를 수집해보세요.",
       image: "/유튜브,공식홈페이지,깃허브.png",
+    variant: "connect",
     cards: [
       {
         title: "숨에 관하여",
@@ -231,7 +231,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
           ref={(element) => {
             sectionRefs.current[sectionIndex] = element;
           }}
-          className={`home-section ${currentSection === sectionIndex ? "active" : ""}`}
+          className={`home-section home-section-${section.variant} ${currentSection === sectionIndex ? "active" : ""}`}
         >
           <div className="home-section-inner">
             <div className="home-copy">
@@ -276,7 +276,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
                     className="home-main-image"
                   />
                 </div>
-              ) : sectionIndex === 2 ? (
+              ) : section.variant === "usage" ? (
                 <div className="home-search-demo">
                   <div className="home-search-top">
                     <span>문법 검색</span>
