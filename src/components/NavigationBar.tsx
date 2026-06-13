@@ -43,6 +43,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
     }, 180);
   };
 
+
   useEffect(() => {
     setIsExpanded(false);
     setIsHidden(false);
@@ -145,7 +146,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
               >
                 <div className="nav-menu-sub-list">
                   {group.links.map((link) =>
-                    link.external ? (
+                    'external' in link && link.external ? (
                       <a
                         key={link.label}
                         href={link.path}

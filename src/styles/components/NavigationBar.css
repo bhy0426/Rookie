@@ -78,13 +78,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  gap: clamp(18px, 4vw, 44px);
+  padding: 0 16px;
+  gap: clamp(18px, 4vw, 35px);
 }
 
 .nav-links a {
   position: relative;
   color: var(--suum-muted);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 750;
 }
 

@@ -6,12 +6,18 @@ let hasHomeIntroPlayed = false;
 
 const homeSections = [
   {
+    title: "숨",
+    description:
+      "한글 비주얼 프로그래밍 언어",
+    variant: "main",
+  },
+  {
     eyebrow: "숨 이란?",
     title: "한글로 생각하고, 흐름으로 프로그래밍하다.",
     description:
       "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다.",
       image: "/홈-숨언어간단소개이미지.png",
-    variant: "main",
+    variant: "explain",
   },
   {
     eyebrow: "흐름 보기",
@@ -46,6 +52,7 @@ const homeSections = [
         description:
           "숨의 스팀 판매 홈페이지로 이동합니다.\n숨의 구매 및 업데이트 소식을\n확인할 수 있습니다.",
         path: "https://store.steampowered.com/app/3594080/Suum/",
+        bgColor: "#4e8edb",
       },
       {
         title: "숨 유튜브 채널",
@@ -53,6 +60,8 @@ const homeSections = [
         description:
           "숨의 공식 유튜브 채널로 이동합니다.\n숨의 강의 영상을 시청 할 수 있습니다.",
         path: "https://www.youtube.com/@suumlang",
+        bgColor: "#ec5a5f",
+        // bgColor: "linear-gradient(180deg, #f3afaf, #f12930)"
       },
       {
         title: "공식 홈페이지",
@@ -60,6 +69,7 @@ const homeSections = [
         description:
           "숨의 공식 홈페이지로 이동합니다. 자세한 정보 및 업데이트 소식을\n확인 할 수 있습니다.",
         path: "https://suum.pro/",
+        bgColor: "#797979",
       },
     ],
   },
@@ -224,7 +234,6 @@ function Home({ setHomeNavHidden }: HomeProps) {
           />
         ))}
       </div>
-
       {homeSections.map((section, sectionIndex) => (
         <section
           key={section.title}
@@ -259,7 +268,13 @@ function Home({ setHomeNavHidden }: HomeProps) {
               {section.cards ? (
                 <div className="home-card-grid">
                   {section.cards.map((card) => (
-                    <Link key={card.title} to={card.path} target="_blank" rel="noopener noreferrer" className="home-link-card">
+                    <Link 
+                      key={card.title} 
+                      to={card.path} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="home-link-card"
+                      style={{ "--card-bg": card.bgColor } as React.CSSProperties}>
                       <img src={card.image} alt={card.title} />
                       <div className="home-link-card-body">
                         <h3>{card.title}</h3>
@@ -301,6 +316,8 @@ function Home({ setHomeNavHidden }: HomeProps) {
                     ))}
                   </div>
                 </div>
+              ) : section.variant === "main" ? (
+                <div />
               ) : (
                 <div className="home-flow-card">
                   {(section.points ?? []).map((point, pointIndex) => (
