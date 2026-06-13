@@ -97,21 +97,24 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
             <small>  S U U M</small>
           </span>
         </Link>
-
-        <div className="nav-links" aria-label="주요 메뉴">
-          {navGroups.map((group) => (
-            <Link
-              key={group.path}
-              to={group.path}
-              className={pathname === group.path ? "active" : ""}
-              onMouseEnter={() => {
-                setHoveredGroup(group);
-                openNavbar();
-              }}
-            >
-              {group.label}
-            </Link>
-          ))}
+        <div>
+          <div className="nav-links" aria-label="주요 메뉴">
+            {navGroups.map((group) => (
+              <div>
+                <Link
+                  key={group.path}
+                  to={group.path}
+                  className={pathname === group.path ? "active" : ""}
+                  onMouseEnter={() => {
+                    setHoveredGroup(group);
+                    openNavbar();
+                  }}
+                >
+                  {group.label}
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
