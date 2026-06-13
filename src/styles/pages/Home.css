@@ -15,24 +15,35 @@
   background: transparent;
 }
 
-
-.home-section-main { /* 메인섹션 레이아웃 조정 */
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 104px 24px 56px;
-  border-bottom: 1px solid var(--suum-border);
-  background: transparent;
+/* 메인섹션 레이아웃 조정 */
+.home-section-main {
+  justify-content: center;
+  text-align: center;
 }
 
-.home-section-main-inner {
-  width: min(var(--suum-page-width), 100%);
-  margin: 0 auto;
+.home-main-content {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
-  gap: clamp(32px, 7vw, 92px);
-  align-items: center;
+  justify-items: center;
+  gap: 22px;
+}
+
+.home-main-title {
+  margin: 0;
+  color: var(--suum-text);
+  font-size: clamp(96px, 18vw, 220px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+}
+
+.home-main-description {
+  margin: 0;
+  color: var(--suum-muted);
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 650;
+  line-height: 1.5;
 }
 
 .home-section-connect { /* 연결섹션 레이아웃 조정 */

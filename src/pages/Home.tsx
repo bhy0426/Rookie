@@ -109,6 +109,8 @@ function Home({ setHomeNavHidden }: HomeProps) {
   const wheelLockRef = useRef(false);
   const currentSectionRef = useRef(0);
   const totalSections = homeSections.length;
+  const previousSectionRef = useRef<number | null>(null);
+  const lastMainEventTimeRef = useRef(-Infinity);
 
   useEffect(() => {
     if (hasHomeIntroPlayed) {
@@ -188,6 +190,22 @@ function Home({ setHomeNavHidden }: HomeProps) {
     };
   }, [totalSections, setHomeNavHidden]);
 
+  useEffect(() => { // 섹션 진입 시 커스텀 이벤트 발생
+    if (currentSection !== 0) return;
+
+    const now = performance.now();
+
+    if (now - lastMainEventTimeRef.current < 1200) {
+      return;
+    }
+
+    lastMainEventTimeRef.current = now;
+
+    window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("mainSectionEvent"));
+    }, 50);
+  }, [currentSection]); 
+
 
   useEffect(() => {
     const currentKeyword = searchDemos[demoIndex].keyword;
@@ -234,7 +252,26 @@ function Home({ setHomeNavHidden }: HomeProps) {
           />
         ))}
       </div>
-      {homeSections.map((section, sectionIndex) => (
+      {homeSections.map((section, sectionIndex) => {
+        const isActive = currentSection === sectionIndex;
+        if (section.variant === "main") {
+          return (
+            <section
+              key={section.title}
+              ref={(element) => {
+                sectionRefs.current[sectionIndex] = element;
+              }}
+              className={`home-section home-section-main ${isActive ? "active" : ""}`}
+            >
+              <div className="home-main-content">
+                <h1 className="home-main-title">{section.title}</h1>
+                <p className="home-main-description">{section.description}</p>
+              </div>
+            </section>
+          );
+        }
+
+        return(
         <section
           key={section.title}
           ref={(element) => {
@@ -331,7 +368,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
             </div>
           </div>
         </section>
-      ))}
+      )})}
     </main>
   );
 }

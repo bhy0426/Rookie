@@ -61,6 +61,29 @@ function createParticle(width: number, height: number): LetterParticle {
 
 function HangulBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  // 메인 섹션 진입 감지용 refs
+  const gatherModeRef = useRef(false);
+  const gatherStartedAtRef = useRef(0);
+  const lastGatherEventRef = useRef(-Infinity);
+  useEffect(() => {
+    const triggerGather = () => {
+    const now = performance.now();
+
+    if (now - lastGatherEventRef.current < 1200) {
+      return;
+    }
+
+    lastGatherEventRef.current = now;
+    gatherModeRef.current = true;
+    gatherStartedAtRef.current = now;
+  };
+
+    window.addEventListener("mainSectionEvent", triggerGather);
+
+    return () => {
+      window.removeEventListener("mainSectionEvent", triggerGather);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -112,6 +135,28 @@ function HangulBackground() {
     };
 
     const moveParticle = (particle: LetterParticle) => {
+      const now = performance.now(); // 메인 섹션 진입 시 중앙으로 모이기
+
+      if (gatherModeRef.current) {
+        const elapsed = now - gatherStartedAtRef.current;
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        if (elapsed < 1000) {
+          particle.vx += (centerX - particle.x) * 0.004;
+          particle.vy += (centerY - particle.y) * 0.004;
+        } else {
+          const dx = particle.x - centerX;
+          const dy = particle.y - centerY;
+          const distance = Math.hypot(dx, dy) || 1;
+
+          particle.vx += (dx / distance) * 3;
+          particle.vy += (dy / distance) * 3;
+
+          gatherModeRef.current = false;
+        }
+      }
+
       const dx = particle.x - mouse.x;
       const dy = particle.y - mouse.y;
       const distance = Math.hypot(dx, dy);
