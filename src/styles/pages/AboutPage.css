@@ -1,13 +1,14 @@
 .aboutPage-upper {
-  min-height: 100vh;
-  padding: 12px 0 84px;
+  /* min-height: 100vh;
+  padding: 12px 0 84px; */
   opacity: 0;
   transform: translateY(-30px);
+  background-color: magenta;
   /* background: transparent; */
 }
 
 .aboutPage {
-  min-height: 100vh;
+  /* height: 5000px; */
   padding: 87px 0 84px;
   background: transparent;
 
@@ -20,14 +21,32 @@
   transition-timing-function: ease;
 }
 
+.aboutHeroStickyArea {
+  min-height: calc(1800px + 100vh);
+  /* background-color: yellow; */
+}
+
 .aboutHero-upper {
+  /* opacity: 0;
+  transform: translateY(-30px); */
   opacity: 0;
-  transform: translateY(-30px);
+  /* transform: translateY(-50px); */
+  /* background-color: magenta; */
+}
+
+.aboutHero-lower {
+  /* opacity: 0;
+  transform: translateY(-30px); */
+  top: 0px;
 }
 
 .aboutHero {
   /* display: grid; */
-  /* background-color: rgb(255, 69, 193); */
+  position: sticky;
+  top: 87px;
+  /* width: 90vw; */
+  min-height: calc(100vh - 87px);
+  /* background-color: magenta; */
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 48px;
   align-items: center;
@@ -35,8 +54,10 @@
   padding-top: 30vh;
   padding-bottom: 30vh;
 
-  /* transition-property: transform opacity;
-  transition-duration: 1.5s; */
+  opacity: 1;
+  /* transform: translateY(0px); */
+  transition-property: opacity;
+  transition-duration: 2s;
   /* transition-delay: 2s; */
   /* transition-timing-function: ease; */
 }
@@ -138,7 +159,7 @@
 .aboutFlow,
 .aboutContent,
 .aboutPhilosophy {
-  margin-top: 400px;
+  margin-top: 200px;
 }
 
 .aboutContent span,
@@ -201,6 +222,7 @@
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 18px;
+  /* min-height: 300px; */
   /* text-align: center; */
   /* align-items: stretch; */
   /* background-color: magenta; */
@@ -295,6 +317,8 @@
 .about-arrow-visible {
   transition-property: opacity;
   transition-duration: 2s;
+  position: sticky;
+  top: 85vh;
 }
 
 .about-content-hidden {
@@ -303,4 +327,6 @@
 
 .about-content-visible {
   transition: opacity 2s ease 1s;
+  /* position: fixed;
+  bottom: 100px; */
 }

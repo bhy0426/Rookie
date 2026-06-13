@@ -189,9 +189,9 @@ function Usage() {
         </section>
       </section>
 
-      <section className="usageEditorSection">
+      {/* <section className="usageEditorSection">
         <EditorBlock data={previewItem.content} />
-      </section>
+      </section> */}
 
       <section className="grammarBrowser">
         <div className="browserHeader">

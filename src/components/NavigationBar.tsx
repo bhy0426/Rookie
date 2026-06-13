@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/components/NavigationBar.css";
+import hero from "../pic/hero.png";
 
 const navGroups = [
   {
@@ -122,8 +123,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
         <Link to="/" className="nav-brand" aria-label="숨 홈으로 이동">
           <span className="nav-brand-mark">숨</span>
           <span>
-            <strong>ㅅㅜㅁ</strong>
-            <small>  S U U M</small>
+            <strong>ㅅ ㅜ ㅁ</strong>
+            <small>S U U M</small>
           </span>
         </Link>
 
