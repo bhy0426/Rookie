@@ -109,7 +109,6 @@ function Home({ setHomeNavHidden }: HomeProps) {
   const wheelLockRef = useRef(false);
   const currentSectionRef = useRef(0);
   const totalSections = homeSections.length;
-  const previousSectionRef = useRef<number | null>(null);
   const lastMainEventTimeRef = useRef(-Infinity);
 
   useEffect(() => {
