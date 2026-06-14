@@ -13,23 +13,23 @@ const homeSections = [
   },
   {
     eyebrow: "숨 이란?",
-    title: "한글로 생각하고, 흐름으로 프로그래밍하다.",
+    title: "한글로 코딩하며, 비주얼로 코딩하다.",
     description:
       "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다.",
       image: "/홈-숨언어간단소개이미지.png",
     variant: "explain",
   },
   {
-    eyebrow: "흐름 보기",
-    title: "입력, 판단, 실행을 한눈에 따라갑니다.",
+    eyebrow: "숨에 관하여",
+    title: "숨은 무엇이고, 어떻게 만들어졌을까?",
     description:
       "텍스트만 나열하는 방식이 아니라 프로그램의 구조를 구역과 흐름으로 보여주어 처음 배우는 사람도 실행 순서를 놓치지 않게 합니다.",
     points: ["순서도 중심의 구조", "키보드 기반 입력", "오류를 줄이는 작성 방식"],
     variant: "search",
   },
   {
-    eyebrow: "설명과 이해",
-    title: "문법을 찾고, 예시를 보고, 바로 이해합니다.",
+    eyebrow: "사용 방법",
+    title: "숨은 어떻게 사용해야 할까?",
     description:
       "사용 페이지에서는 숨의 문법을 검색하고 상세 예시를 확인할 수 있습니다. 각 문법은 실제 화면 자료와 함께 정리됩니다.",
     primaryLabel: "문법 보러가기",
@@ -48,7 +48,7 @@ const homeSections = [
     cards: [
       {
         title: "스팀 페이지",
-        image: "/images/Steam.png",
+        image: "/SteamLogo2.png",
         description:
           "숨의 스팀 판매 홈페이지로 이동합니다.\n숨의 구매 및 업데이트 소식을\n확인할 수 있습니다.",
         path: "https://store.steampowered.com/app/3594080/Suum/",
@@ -56,16 +56,15 @@ const homeSections = [
       },
       {
         title: "숨 유튜브 채널",
-        image: "/images/youtube.png",
+        image: "/YoutubeLogo2.png",
         description:
           "숨의 공식 유튜브 채널로 이동합니다.\n숨의 강의 영상을 시청 할 수 있습니다.",
         path: "https://www.youtube.com/@suumlang",
         bgColor: "#ec5a5f",
-        // bgColor: "linear-gradient(180deg, #f3afaf, #f12930)"
       },
       {
         title: "공식 홈페이지",
-        image: "/images/Suumpage.png",
+        image: "/SuumLogo3.png",
         description:
           "숨의 공식 홈페이지로 이동합니다. 자세한 정보 및 업데이트 소식을\n확인 할 수 있습니다.",
         path: "https://suum.pro/",
@@ -110,6 +109,11 @@ function Home({ setHomeNavHidden }: HomeProps) {
   const currentSectionRef = useRef(0);
   const totalSections = homeSections.length;
   const lastMainEventTimeRef = useRef(-Infinity);
+  
+  // 수정
+  const scrollModeRef = useRef<"locked" | "free" | "relockPending">("locked");
+  const relockTimerRef = useRef<number | null>(null);
+  const homeRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (hasHomeIntroPlayed) {
@@ -136,6 +140,9 @@ function Home({ setHomeNavHidden }: HomeProps) {
   useEffect(() => {
     currentSectionRef.current = currentSection;
 
+    // 수정
+    if (scrollModeRef.current === "free") return;
+    
     const targetSection = sectionRefs.current[currentSection];
 
     if (!targetSection) return;
@@ -157,6 +164,21 @@ function Home({ setHomeNavHidden }: HomeProps) {
       const isLastSection = current === totalSections - 1;
       const isFirstSection = current === 0;
 
+      if (scrollModeRef.current === "free") {
+        return;
+      }
+
+      if (scrollModeRef.current === "relockPending") {
+        event.preventDefault();
+        return;
+      }
+
+      if (isScrollDown && isLastSection) {
+        scrollModeRef.current = "free";
+        setHomeNavHidden(true);
+        return;
+      }
+
       event.preventDefault();
 
       if (isScrollUp) {
@@ -169,7 +191,22 @@ function Home({ setHomeNavHidden }: HomeProps) {
 
       if (wheelLockRef.current) return;
 
-      if ((isScrollDown && isLastSection) || (isScrollUp && isFirstSection)) return;
+      if (isScrollUp && isFirstSection) return;
+
+
+      // event.preventDefault();
+
+      // if (isScrollUp) {
+      //   setHomeNavHidden(false);
+      // }
+
+      // if (isScrollDown) {
+      //   setHomeNavHidden(true);
+      // }
+
+      // if (wheelLockRef.current) return;
+
+      // if ((isScrollDown && isLastSection) || (isScrollUp && isFirstSection)) return;
 
       wheelLockRef.current = true;
 
@@ -188,6 +225,52 @@ function Home({ setHomeNavHidden }: HomeProps) {
       window.removeEventListener("wheel", handleWheel);
     };
   }, [totalSections, setHomeNavHidden]);
+
+  //   useEffect(() => {
+  //   const handleWheel = (event: WheelEvent) => {
+  //     // 기존 wheel 코드
+  //   };
+
+  //   window.addEventListener("wheel", handleWheel, { passive: false });
+
+  //   return () => {
+  //     window.removeEventListener("wheel", handleWheel);
+  //   };
+  // }, [totalSections, setHomeNavHidden]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollModeRef.current !== "free") return;
+
+      const homeTop = homeRef.current?.getBoundingClientRect().top ?? 0;
+
+      if (homeTop >= -4 && window.scrollY <= 4) {
+        scrollModeRef.current = "relockPending";
+
+        currentSectionRef.current = totalSections - 1;
+        setCurrentSection(totalSections - 1);
+
+        if (relockTimerRef.current) {
+          window.clearTimeout(relockTimerRef.current);
+        }
+
+        relockTimerRef.current = window.setTimeout(() => {
+          scrollModeRef.current = "locked";
+          relockTimerRef.current = null;
+        }, 700);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (relockTimerRef.current) {
+        window.clearTimeout(relockTimerRef.current);
+      }
+    };
+  }, [totalSections]);
 
   useEffect(() => { // 섹션 진입 시 커스텀 이벤트 발생
     if (currentSection !== 0) return;
@@ -238,6 +321,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
 
   return (
     <main
+      ref={homeRef}
       className={`home-scroll ${introVisible ? "intro-visible" : ""} ${introComplete ? "intro-complete" : "intro-sequence"}`}
     >
       <div className="home-progress" aria-label="홈 섹션 이동">

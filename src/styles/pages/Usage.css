@@ -21,29 +21,40 @@
   scroll-margin-top: 70px;
 }
 
+.usageWorkbench {
+  height: 500px;
+}
+
 .usageIntro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 430px;
-  gap: 32px;
+  display: flex;
+  /* grid-template-columns: minmax(0, 1fr) 430px;
+  gap: 32px; */
   align-items: end;
   margin-bottom: 24px;
 }
 
 .usageIntroCopy {
-  padding: 32px 0 12px;
+  padding: 48px 0 48px;
+  text-align: center;
+  margin: auto;
+}
+
+.usageIntroCopy span {
+  color: var(--suum-accent);
 }
 
 .usageIntro h1 {
   margin: 10px 0 18px;
   color: var(--suum-text);
   font-size: clamp(42px, 7vw, 78px);
+  font-weight: 600;
   line-height: 0.98;
   letter-spacing: -0.07em;
 }
 
 .usageIntro p:not(.eyebrow) {
-  width: min(680px, 100%);
-  margin: 0;
+  /* width: min(680px, 100%); */
+  margin: auto;
   color: var(--suum-muted);
   font-size: 18px;
   line-height: 1.75;
@@ -147,15 +158,16 @@
 }
 
 .grammarBrowser {
+  /* max-height: 100px; */
   border: 1px solid rgba(17, 17, 17, 0.16);
-  background: rgba(255, 255, 255, 0.12);
+  /* background: rgba(255, 255, 255, 0.12); */
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
 
 .usageControlPanel {
-  position: sticky;
-  top: 86px;
+  position: relative;
+  /* top: 86px; */
   padding: 18px;
 }
 
@@ -418,9 +430,12 @@
 }
 
 .grammarList {
+  max-height: 350px;
   display: grid;
   gap: 10px;
   border-top: 0;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .grammarRow {

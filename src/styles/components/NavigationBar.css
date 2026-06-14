@@ -148,6 +148,13 @@
   align-items: center;
 }
 
+.nav-preview-image {
+  width: 600px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
 .nav-preview h2 {
   margin: 7px 0 9px;
   color: var(--suum-text);

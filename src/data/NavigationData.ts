@@ -2,7 +2,11 @@ const navGroups = [
   {
     label: "숨이란?",
     path: "/about",
-    image: "/images/about-preview.png",
+    image: [
+              "/SuumLogo.png",
+              "/SteamLogo.png",
+              "/YoutubeLogo.png.png",
+            ],
     description: "숨의 목적, 특징, 개발 철학을 소개합니다.",
     links: [
       { label: "프로젝트 소개", path: "/about" },
@@ -22,7 +26,7 @@ const navGroups = [
   {
     label: "연결",
     path: "/connect",
-    image: "/images/connect-preview.png",
+    image: "/connect.png",
     description: "공식 페이지와 프로젝트 저장소로 이동합니다.",
     links: [
       { label: "스팀 페이지", path: "https://store.steampowered.com/app/3594080/Suum/", external: true },

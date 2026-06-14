@@ -80,15 +80,18 @@ function Usage() {
     <main className="usagePage">
       <section className="usageIntro">
         <div className="usageIntroCopy">
-          <p className="eyebrow">SUUM GUIDE</p>
-          <h1>숨 언어 사용 가이드</h1>
-          <p>
+          {/* <p className="eyebrow">사용</p> */}
+          <h1>숨은 <span>어떻게</span> 사용하나요?</h1>
+          {/* <p>
             숨의 문법을 단순 카드 목록으로 넘기지 않고, 검색부터 미리보기, 예시 코드, 상세 학습까지 하나의 실습 흐름으로
             확인할 수 있게 구성했습니다.
+          </p> */}
+          <p>
+            숨의 문법을 검색부터 미리보기, 예시 코드, 상세 학습까지 한 눈에 확인해보세요 (～￣▽￣)～
           </p>
         </div>
 
-        <div className="usageStats" aria-label="사용 페이지 구성 요약">
+        {/* <div className="usageStats" aria-label="사용 페이지 구성 요약">
           <div>
             <strong>{grammarData.length}</strong>
             <span>정리된 문법</span>
@@ -101,10 +104,10 @@ function Usage() {
             <strong>1</strong>
             <span>통합 미리보기</span>
           </div>
-        </div>
+        </div> */}
       </section>
 
-      <section className="usageSteps" aria-label="학습 흐름">
+      {/* <section className="usageSteps" aria-label="학습 흐름">
         {learningSteps.map((step) => (
           <div className="usageStep" key={step.number}>
             <span>{step.number}</span>
@@ -114,10 +117,10 @@ function Usage() {
             </div>
           </div>
         ))}
-      </section>
+      </section> */}
 
       <section id="search" className="usageWorkbench" ref={previewSectionRef}>
-        <aside className="usageControlPanel">
+        <section className="usageControlPanel">
           <div className="usageSearchBox">
             <label htmlFor="grammar-search">문법 검색</label>
             <input
@@ -142,9 +145,38 @@ function Usage() {
               </button>
             ))}
           </div>
-        </aside>
+        </section>
 
-        <section className="usagePreviewPanel">
+        <section id="grammar" className="grammarBrowser">
+          <div className="browserHeader">
+            <div>
+              <p className="eyebrow">BROWSE</p>
+              <h2>문법 탐색</h2>
+            </div>
+            <span>{filteredGrammar.length}개 표시 / 전체 {grammarData.length}개</span>
+          </div>
+
+          <div className="grammarList">
+            {filteredGrammar.map((item) => (
+              <button
+                type="button"
+                key={item.id}
+                className={previewItem.id === item.id ? 'grammarRow active' : 'grammarRow'}
+                onClick={() => handlePreview(item)}
+              >
+                <span className="grammarNumber">{String(item.id).padStart(2, '0')}</span>
+                <span className="grammarMainText">
+                  <strong>{item.title}</strong>
+                  <em>{item.description}</em>
+                </span>
+                <span className="grammarCategory">{item.category}</span>
+                <span className="grammarShortcut">{item.shortcut}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+      </section>
+      <section className="usagePreviewPanel suum-container">
           <div className="previewHeader">
             <div>
               <p className="eyebrow">선택한 문법</p>
@@ -155,10 +187,10 @@ function Usage() {
           </div>
 
           <div className="usagePreviewGrid">
-            <div className="previewImageFrame">
+            {/* <div className="previewImageFrame">
               <span>자료 화면</span>
               <img src={previewItem.image} alt={`${previewItem.title} 자료 화면`} />
-            </div>
+            </div> */}
 
             <div className="previewTextStack">
               <div className="syntaxPanel">
@@ -169,11 +201,12 @@ function Usage() {
                 <code>{previewItem.example}</code>
               </div>
 
-              <div className="cautionPanel">
+              {/* <div className="cautionPanel">
                 <span>주의할 점</span>
                 <p>{previewItem.caution}</p>
-              </div>
+              </div> */}
 
+            </div>
               <div className="relatedPanel">
                 <span>같은 분류의 문법</span>
                 <div>
@@ -184,43 +217,13 @@ function Usage() {
                   )) : <p>같은 분류의 다른 문법이 없습니다.</p>}
                 </div>
               </div>
-            </div>
           </div>
         </section>
-      </section>
-
-      <section className="usageEditorSection">
+      {/* <section className="usageEditorSection">
         <EditorBlock data={previewItem.content} />
-      </section>
+      </section> */}
 
-      <section id="grammar" className="grammarBrowser">
-        <div className="browserHeader">
-          <div>
-            <p className="eyebrow">BROWSE</p>
-            <h2>문법 탐색</h2>
-          </div>
-          <span>{filteredGrammar.length}개 표시 / 전체 {grammarData.length}개</span>
-        </div>
-
-        <div className="grammarList">
-          {filteredGrammar.map((item) => (
-            <button
-              type="button"
-              key={item.id}
-              className={previewItem.id === item.id ? 'grammarRow active' : 'grammarRow'}
-              onClick={() => handlePreview(item)}
-            >
-              <span className="grammarNumber">{String(item.id).padStart(2, '0')}</span>
-              <span className="grammarMainText">
-                <strong>{item.title}</strong>
-                <em>{item.description}</em>
-              </span>
-              <span className="grammarCategory">{item.category}</span>
-              <span className="grammarShortcut">{item.shortcut}</span>
-            </button>
-          ))}
-        </div>
-      </section>
+      
     </main>
   );
 }

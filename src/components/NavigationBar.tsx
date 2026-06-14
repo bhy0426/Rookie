@@ -13,6 +13,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [hoveredGroup, setHoveredGroup] = useState(navGroups[0]);
+  const [previewImageIndex, setPreviewImageIndex] = useState(0);
 
   const navRef = useRef<HTMLElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -43,6 +44,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
     }, 180);
   };
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setPreviewImageIndex((currentIndex) =>
+        (currentIndex + 1) % hoveredGroup.image.length
+      );
+    }, 2000);
+
+    return () => window.clearInterval(timer);
+  }, [hoveredGroup]);
 
   useEffect(() => {
     setIsExpanded(false);
@@ -127,12 +137,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
       >
         <div className="suum-container nav-panel-inner">
           <div className="nav-preview">
+            <p className="eyebrow">MENU</p>
             <img
-              src={hoveredGroup.image}
+              src={hoveredGroup.image[previewImageIndex]}
               alt={hoveredGroup.label}
               className="nav-preview-image"
             />
-            <p className="eyebrow">MENU</p>
             <h2>{hoveredGroup.label}</h2>
             <p>{hoveredGroup.description}</p>
           </div>
