@@ -1,7 +1,8 @@
 import "../styles/pages/AboutPage.css";
 import { useState, useEffect, useRef } from "react";
 import about_down_arrow from "../pic/down-arrow.png";
-import about_rect from "../pic/icon.png";
+import about_rect from "../pic/about_rect.svg";
+import about_icon from "../pic/icon.png";
 
 // const featureItems = [
 //   {
@@ -167,9 +168,8 @@ const AboutPage: React.FC = () => {
               또한 순서도의 형태에서 영감을 받은 이름으로, 언어의 직관적인 사용성을 상징합니다.
             </p>
           </div>
-          <div className="aboutImg">
-            이미지
-            {/* <img src={about_rect} /> */}
+          <div className="m-auto">
+            <img src={about_icon}  className="aboutImg"/>
           </div>
         </section>
 
@@ -182,9 +182,8 @@ const AboutPage: React.FC = () => {
               숨은 이 한계를 줄이기 위해 키보드 중심의 비주얼 프로그래밍을 지향합니다.
             </p>
           </div>
-          <div className="aboutImg">
-            이미지
-            {/* <img src={about_rect} /> */}
+          <div className="m-auto bg-dark">
+            <img src={about_rect}  className="aboutImg"/>
           </div>
 
           {/* <div className="featureGrid">
@@ -206,9 +205,8 @@ const AboutPage: React.FC = () => {
               숨은 실수를 줄이고, 복잡한 프로그램도 안정적으로 작성할 수 있는 학습형 개발 경험을 목표로 합니다.
             </p>
           </div>
-          <div className="aboutImg">
-            이미지
-            {/* <img src={about_rect} /> */}
+          <div className="m-auto bg-dark">
+            <img src={about_icon}  className="aboutImg"/>
           </div>
         </section>
       </section>

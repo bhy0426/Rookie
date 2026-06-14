@@ -229,11 +229,12 @@
 }
 
 .aboutImg {
-  background-color: rgb(255, 238, 0);
-  width: 400px;
-  height: 100%;
+  /* background-color: rgb(240, 240, 240); */
+  max-width: 300px;
+  max-height: 200px;
   margin: auto;
   color: black;
+  object-fit: cover;
 }
 
 .aboutTextBox,
@@ -249,6 +250,7 @@
 .aboutTextBox,
 .aboutPhilosophy {
   padding: 28px;
+  margin: auto;
 }
 
 .featureGrid {
