@@ -2,14 +2,9 @@
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 12px;
+  text-align: center;
 }
 
-.sitemap-list .nav-link {
-  padding: 4px 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.sitemap-list .nav-link:hover {
-  color: #000;
+.sitemap-list {
+  text-align: center;
 }

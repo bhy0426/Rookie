@@ -6,39 +6,43 @@ import '../styles/components/Sitemap.css';
 const FooterSitemap: React.FC = () => {
   return (
     <div className="bg-light py-5 border-top">
-      <Container>
+      <Container className='bg-yellow'>
         <Row>
-          <Col xs={6} md={3} className="mb-4">
-            <h6 className="sitemap-title">About</h6>
+          <Col>
+            <h6 className="sitemap-title">숨</h6>
             <ul className="list-unstyled sitemap-list">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About SOOM</Link></li>
+              <li><Link to="/">섹션1</Link></li>
+              <li><Link to="/">섹션2</Link></li>
+              <li><Link to="/">섹션3</Link></li>
+              <li><Link to="/">섹션4</Link></li>
             </ul>
           </Col>
 
-          <Col xs={6} md={3} className="mb-4">
-            <h6 className="sitemap-title">Usage</h6>
+          <Col>
+            <h6 className="sitemap-title">숨이란?</h6>
             <ul className="list-unstyled sitemap-list">
-              <li><Link to="/usage">사용 페이지 메인</Link></li>
+              <li><Link to="/">의미</Link></li>
+              <li><Link to="/about">왜</Link></li>
+              <li><Link to="/about">개발 철학</Link></li>
             </ul>
           </Col>
 
-          <Col xs={6} md={3} className="mb-4">
-            <h6 className="sitemap-title">Grammar</h6>
+          <Col>
+            <h6 className="sitemap-title">사용</h6>
             <ul className="list-unstyled sitemap-list">
-              <li><Link to="/grammar/1">문법 1: 기본 자료형</Link></li>
-              <li><Link to="/grammar/2">문법 2: 선택 화면</Link></li>
-              <li><Link to="/grammar/3">문법 3: 그림 화면</Link></li>
-              <li><Link to="/usage">모든 문법 보기</Link></li>
+              <li><Link to="/usage">문법 검색</Link></li>
+              <li><Link to="/usage">문법 목록</Link></li>
             </ul>
           </Col>
 
-          <Col xs={6} md={3} className="mb-4">
-            <h6 className="sitemap-title">Connect</h6>
+          {/* <Col xs={6} md={3} className="mb-4"> */}
+          <Col>
+            <h6 className="sitemap-title">연결</h6>
             <ul className="list-unstyled sitemap-list">
-              <li><Link to="/connect">커뮤니티 메인</Link></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a></li>
-              <li><a href="https://store.steampowered.com" target="_blank" rel="noreferrer">Steam</a></li>
+              <li><a href="https://youtube.com" target="_blank" rel="noreferrer">홈페이지 링크</a></li>
+              <li><a href="https://store.steampowered.com" target="_blank" rel="noreferrer">유튜브</a></li>
+              <li><a href="https://store.steampowered.com" target="_blank" rel="noreferrer">스팀</a></li>
+              <li><a href="https://store.steampowered.com" target="_blank" rel="noreferrer">깃허브</a></li>
             </ul>
           </Col>
         </Row>

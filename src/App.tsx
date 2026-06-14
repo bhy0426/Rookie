@@ -2,10 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import './App.css';
 
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Sitemap from './components/Sitemap';
+import HangulBackground from './components/HangulBackground';
 import HangulBackground from './components/HangulBackground';
 
 import Home from './pages/Home';
@@ -50,12 +54,23 @@ function App() {
     setHomeNavHidden(false);
   }, [pathname]);
 
+  const { pathname } = useLocation();
+  const [homeNavHidden, setHomeNavHidden] = useState(false);
+
+  useEffect(() => {
+    setHomeNavHidden(false);
+  }, [pathname]);
+
   return (
     <>
       <ScrollToTop />
       <HangulBackground />
       <NavigationBar forceHidden={homeNavHidden} />
+      <ScrollToTop />
+      <HangulBackground />
+      <NavigationBar forceHidden={homeNavHidden} />
       <Routes>
+        <Route path="/" element={<Home setHomeNavHidden={setHomeNavHidden} />} />
         <Route path="/" element={<Home setHomeNavHidden={setHomeNavHidden} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/usage" element={<Usage />} />
