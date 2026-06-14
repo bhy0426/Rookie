@@ -9,16 +9,6 @@ const FooterSitemap: React.FC = () => {
       <Container className='bg-yellow'>
         <Row>
           <Col>
-            <h6 className="sitemap-title">숨</h6>
-            <ul className="list-unstyled sitemap-list">
-              <li><Link to="/">섹션1</Link></li>
-              <li><Link to="/">섹션2</Link></li>
-              <li><Link to="/">섹션3</Link></li>
-              <li><Link to="/">섹션4</Link></li>
-            </ul>
-          </Col>
-
-          <Col>
             <h6 className="sitemap-title">숨이란?</h6>
             <ul className="list-unstyled sitemap-list">
               <li><Link to="/">의미</Link></li>

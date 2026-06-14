@@ -138,7 +138,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
       >
         <div className="suum-container nav-panel-inner">
           <div className="nav-preview">
-            <p className="eyebrow">MENU</p>
+            <p className="eyebrow">미리보기</p>
             <div className="nav-preview-carousel">
               <div
                 className="nav-preview-track"

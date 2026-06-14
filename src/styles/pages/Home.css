@@ -36,6 +36,11 @@
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.08em;
+  font-family: 'KccHwanGi';
+}
+
+.home-main-image {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .home-main-description {
@@ -47,7 +52,7 @@
 
 .home-main-description .highlight {  /* 글씨 강조 태그 */
   font-weight: bold;
-  /* color: red; */
+  color: var(--suum-accent);
 }
 
 .home-section-connect { /* 연결섹션 레이아웃 조정 */

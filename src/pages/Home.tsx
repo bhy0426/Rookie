@@ -15,23 +15,25 @@ const homeSections = [
     eyebrow: "숨 이란?",
     title: "한글로 코딩하며, 비주얼로 코딩하다.",
     description:
-      "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다.",
-      image: "/홈-숨언어간단소개이미지.png",
+      "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다. ( •̀ ω •́ )✧",
+      image: "/home/explain.png",
     variant: "explain",
   },
   {
     eyebrow: "숨에 관하여",
     title: "숨은 무엇이고, 어떻게 만들어졌을까?",
     description:
-      "텍스트만 나열하는 방식이 아니라 프로그램의 구조를 구역과 흐름으로 보여주어 처음 배우는 사람도 실행 순서를 놓치지 않게 합니다.",
-    points: ["순서도 중심의 구조", "키보드 기반 입력", "오류를 줄이는 작성 방식"],
+      "숨이 무슨 뜻이고, 왜 써야하며, 어떻게 만들었는지 궁금하지 않나요? (p≧w≦q)",
+    primaryLabel: "숨이 무엇일까",
+    primaryPath: "/about",
+    points: ["숨은 무슨 뜻일까", "숨 이거 왜 써야하지?", "어쩌다 만들게 되었나"],
     variant: "search",
   },
   {
     eyebrow: "사용 방법",
     title: "숨은 어떻게 사용해야 할까?",
     description:
-      "사용 페이지에서는 숨의 문법을 검색하고 상세 예시를 확인할 수 있습니다. 각 문법은 실제 화면 자료와 함께 정리됩니다.",
+      "숨에도 문법과 코드가 있답니다. 숨의 문법을 검색부터 미리보기, 예시 코드, 상세 학습까지 한 눈에 확인해보세요. (～￣▽￣)～",
     primaryLabel: "문법 보러가기",
     primaryPath: "/usage",
     secondaryLabel: "연결 페이지",
@@ -42,13 +44,12 @@ const homeSections = [
     eyebrow: "외부 연결 페이지",
     title: "숨과 관련된 다양한 페이지로 이동합니다.",
     description:
-      "스팀, 유튜브, 공식 홈페이지와 깃허브로 이동하여 \n숨에 관한 다양한 정보를 수집해보세요.",
-      image: "/유튜브,공식홈페이지,깃허브.png",
+      "스팀, 유튜브, 공식 홈페이지와 깃허브로 이동하여 \n숨에 관한 다양한 정보를 수집해보세요.\no((>ω< ))o",
     variant: "connect",
     cards: [
       {
         title: "스팀 페이지",
-        image: "/SteamLogo2.png",
+        image: "/logo/SteamLogo.png",
         description:
           "숨의 스팀 판매 홈페이지로 이동합니다.\n숨의 구매 및 업데이트 소식을\n확인할 수 있습니다.",
         path: "https://store.steampowered.com/app/3594080/Suum/",
@@ -56,7 +57,7 @@ const homeSections = [
       },
       {
         title: "숨 유튜브 채널",
-        image: "/YoutubeLogo2.png",
+        image: "/logo/YoutubeLogo.png",
         description:
           "숨의 공식 유튜브 채널로 이동합니다.\n숨의 강의 영상을 시청 할 수 있습니다.",
         path: "https://www.youtube.com/@suumlang",
@@ -64,7 +65,7 @@ const homeSections = [
       },
       {
         title: "공식 홈페이지",
-        image: "/SuumLogo3.png",
+        image: "/logo/SuumLogo.png",
         description:
           "숨의 공식 홈페이지로 이동합니다. 자세한 정보 및 업데이트 소식을\n확인 할 수 있습니다.",
         path: "https://suum.pro/",

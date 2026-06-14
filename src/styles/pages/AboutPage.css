@@ -67,11 +67,12 @@
   /* max-width: 820px; */
   margin: 12px 0 18px;
   color: var(--suum-text);
-  font-size: clamp(38px, 6vw, 62px);
+  font-size: clamp(38px, 4vw, 62px);
   font-weight: 850;
   /* letter-spacing: -0.055em; */
   line-height: 1.25;
   text-align: center;
+  backdrop-filter: blur(2px);
 }
 
 .aboutHero-idle {
@@ -250,7 +251,6 @@
 .aboutTextBox,
 .aboutPhilosophy {
   padding: 28px;
-  margin: auto;
 }
 
 .featureGrid {
@@ -309,7 +309,7 @@
 .aboutFlow {
   /* background: rgba(255, 255, 255, 0.8); */
   /* background-color: rgba(245, 247, 250, 1); */
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
 }
 
 .about-arrow-hidden {
