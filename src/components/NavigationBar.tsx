@@ -118,6 +118,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                   className={pathname === group.path ? "active" : ""}
                   onMouseEnter={() => {
                     setHoveredGroup(group);
+                    setPreviewImageIndex(0);
                     openNavbar();
                   }}
                 >
@@ -138,11 +139,21 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
         <div className="suum-container nav-panel-inner">
           <div className="nav-preview">
             <p className="eyebrow">MENU</p>
-            <img
-              src={hoveredGroup.image[previewImageIndex]}
-              alt={hoveredGroup.label}
-              className="nav-preview-image"
-            />
+            <div className="nav-preview-carousel">
+              <div
+                className="nav-preview-track"
+                style={{ transform: `translateX(-${previewImageIndex * 600}px)` }}
+              >
+                {hoveredGroup.image.map((image) => (
+                  <img
+                    key={image}
+                    src={image}
+                    alt={hoveredGroup.label}
+                    className="nav-preview-image"
+                  />
+                ))}
+              </div>
+            </div>
             <h2>{hoveredGroup.label}</h2>
             <p>{hoveredGroup.description}</p>
           </div>
@@ -163,7 +174,10 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                         target="_blank"
                         rel="noreferrer"
                         className="nav-sub-link"
-                        onMouseEnter={() => setHoveredGroup(group)}
+                        onMouseEnter={() => {
+                          setHoveredGroup(group);
+                          setPreviewImageIndex(0);
+                        }}
                         onClick={closeNavbar}
                       >
                         {link.label}
@@ -174,7 +188,10 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
                         key={link.label}
                         to={link.path}
                         className="nav-sub-link"
-                        onMouseEnter={() => setHoveredGroup(group)}
+                        onMouseEnter={() => {
+                          setHoveredGroup(group);
+                          setPreviewImageIndex(0);
+                        }}
                         onClick={closeNavbar}
                       >
                         {link.label}

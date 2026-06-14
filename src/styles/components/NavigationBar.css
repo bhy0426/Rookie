@@ -148,11 +148,31 @@
   align-items: center;
 }
 
+.nav-preview-carousel {
+  width: 600px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.nav-preview-track {
+  display: flex;
+  width: max-content;
+  height: 200px;
+  transition: transform 0.45s ease;
+}
+
 .nav-preview-image {
+  flex: 0 0 600px;
   width: 600px;
   height: 200px;
   object-fit: cover;
   display: block;
+}
+
+.nav-preview-image-frame {
+  width: 600px;
+  height: 200px;
+  overflow: hidden;
 }
 
 .nav-preview h2 {
@@ -247,4 +267,14 @@
   flex-direction: column;
   gap: 8px;
   align-items: flex-start;
+}
+
+@keyframes navPreviewSlide {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
