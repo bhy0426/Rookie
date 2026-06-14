@@ -1,0 +1,123 @@
+:root {
+  --suum-bg: transparent;
+  --suum-surface: rgba(255, 255, 255, 0.54);
+  --suum-surface-soft: rgba(241, 241, 237, 0.38);
+  --suum-text: #151515;
+  --suum-muted: #666666;
+  --suum-border: rgba(20, 20, 20, 0.12);
+  --suum-border-dark: rgba(20, 20, 20, 0.28);
+  --suum-accent: #8564b8;
+  --suum-accent-dark: #1f3470;
+  --suum-code-bg: #171717;
+  --suum-code-text: #f1f1ee;
+  --suum-radius: 6px;
+  --suum-shadow: none;
+  --suum-page-width: 1160px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'KccHwanGi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/KCC-Kimhwanki.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OmuDaye';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+body {
+  margin: 0;
+  /* background: #f7f7f4; */
+  color: var(--suum-text);
+  font-family: 'NanumSquareRound', Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  word-break: keep-all;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.suum-container {
+  width: min(var(--suum-page-width), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: var(--suum-accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.suum-button,
+.suum-button-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 4px;
+  padding: 0 18px;
+  font-weight: 800;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.suum-button {
+  background: var(--suum-accent);
+  border: 1px solid var(--suum-accent);
+  color: #ffffff;
+}
+
+.suum-button:hover {
+  background: var(--suum-accent-dark);
+  border-color: var(--suum-accent-dark);
+  color: #ffffff;
+}
+
+.suum-button-outline {
+  background: transparent;
+  border: 1px solid var(--suum-border-dark);
+  color: var(--suum-text);
+}
+
+.suum-button-outline:hover {
+  border-color: var(--suum-accent);
+  color: var(--suum-accent-dark);
+}
+
+@media (max-width: 640px) {
+  .suum-container {
+    width: min(100% - 32px, var(--suum-page-width));
+  }
+}
+
+.suum-button,
+.suum-button-outline,
+.suum-card,
+.suum-panel {
+  backdrop-filter: blur(10px);
+}
