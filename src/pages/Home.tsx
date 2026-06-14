@@ -8,7 +8,7 @@ const homeSections = [
   {
     title: "숨",
     description:
-      "한글 비주얼 프로그래밍 언어",
+      "<span class='highlight'>한글</span> 비주얼 <span class='highlight'>프로그래밍</span> 언어",
     variant: "main",
   },
   {
@@ -202,7 +202,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
 
     window.setTimeout(() => {
       window.dispatchEvent(new CustomEvent("mainSectionEvent"));
-    }, 50);
+    }, 100);
   }, [currentSection]); 
 
 
@@ -264,7 +264,10 @@ function Home({ setHomeNavHidden }: HomeProps) {
             >
               <div className="home-main-content">
                 <h1 className="home-main-title">{section.title}</h1>
-                <p className="home-main-description">{section.description}</p>
+                <p
+                  className="home-main-description"
+                  dangerouslySetInnerHTML={{ __html: section.description }}
+                />
               </div>
             </section>
           );

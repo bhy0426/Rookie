@@ -142,7 +142,7 @@ function HangulBackground() {
         const centerX = width / 2;
         const centerY = height / 2;
 
-        if (elapsed < 1000) {
+        if (elapsed < 700) {
           particle.vx += (centerX - particle.x) * 0.004;
           particle.vy += (centerY - particle.y) * 0.004;
         } else {
