@@ -91,7 +91,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       <section className={`${isVisibleContent ? "about_content_visible" : "about_content_hidden"}`}>
-        <section id="mean" className="about-content suum-container">
+        <section id="mean" className="about_content suum-container">
           <div className="about_text_box">
             <h2>숨, 무슨 <span>뜻</span>인가요?</h2>
             <p>
