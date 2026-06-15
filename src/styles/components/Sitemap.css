@@ -1,10 +1,19 @@
+.sitemap_container {
+  background-color: #e6e8ea71;
+  backdrop-filter: blur(5px);
+  padding: 50px 0 50px;
+  color: black;
+}
+
 .sitemap-title {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 12px;
   text-align: center;
+  color: var(--suum-text);
 }
 
 .sitemap-list {
   text-align: center;
+  color: var(--suum-muted);
 }
