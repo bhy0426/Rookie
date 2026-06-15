@@ -19,7 +19,7 @@ export default function UsageGrammarBrowser() {
   const filteredGrammar = useMemo(() => {
     const keyword = searchText.trim().toLowerCase();
 
-    return grammarData.filter((item) => {
+    return grammarData.filter((item: any) => {
       const matchesCategory = selectedCategory === "전체" || item.category === selectedCategory;
       const matchesKeyword =
         keyword.length === 0 ||
@@ -37,14 +37,14 @@ export default function UsageGrammarBrowser() {
       acc[category] =
         category === "전체"
           ? grammarData.length
-          : grammarData.filter((item) => item.category === category).length;
+          : grammarData.filter((item: any) => item.category === category).length;
       return acc;
     }, {});
   }, []);
 
   const relatedItems = useMemo(() => {
     return grammarData
-      .filter((item) => item.category === previewItem.category && item.id !== previewItem.id)
+      .filter((item: any) => item.category === previewItem.category && item.id !== previewItem.id)
       .slice(0, 4);
   }, [previewItem]);
 
@@ -95,7 +95,7 @@ export default function UsageGrammarBrowser() {
           </div>
 
           <div className="grammarList">
-            {filteredGrammar.map((item) => (
+            {filteredGrammar.map((item: any) => (
               <button
                 type="button"
                 key={item.id}
@@ -144,7 +144,7 @@ export default function UsageGrammarBrowser() {
             <span>같은 분류의 문법</span>
             <div>
               {relatedItems.length > 0 ? (
-                relatedItems.map((item) => (
+                relatedItems.map((item: any) => (
                   <button key={item.id} type="button" onClick={() => handlePreview(item)}>
                     {item.title}
                   </button>

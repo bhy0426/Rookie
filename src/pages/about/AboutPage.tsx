@@ -86,7 +86,7 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
         <section className={`${isVisibleArrow ? "about_arrow_visible" : "about_arrow_hidden"} d-flex justify-content-center align-items-center pt-5 pb-5`}>
-          <img src="/about/about_down_arrow.png" />
+          <img src="about/about_down_arrow.png" />
         </section>
       </section>
 
@@ -100,7 +100,7 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="mx-auto">
-            <img src="/logo/icon.png" className="about_img"/>
+            <img src="logo/icon.png" className="about_img"/>
           </div>
         </section>
 
@@ -113,7 +113,7 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="mx-auto bg-dark">
-            <img src="/about/about_img1.png" className="about_img"/>
+            <img src="about/about_img1.png" className="about_img"/>
           </div>
         </section>
 
@@ -127,7 +127,7 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="mx-auto bg-dark">
-            <img src="/about/about_img2.png"  className="about_img"/>
+            <img src="about/about_img2.png"  className="about_img"/>
           </div>
         </section>
       </section>

@@ -462,5 +462,5 @@ const grammarItems: GrammarBaseItem[] = [
 
 export const grammarData: GrammarItem[] = grammarItems.map((item) => ({
   ...item,
-  image: `/grammar/${item.id}.png`
+  image: `grammar/${item.id}.png`
 }));

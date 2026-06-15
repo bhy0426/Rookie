@@ -10,7 +10,7 @@ const homeSections = [
     title: "한글로 코딩하며, 비주얼로 코딩하다.",
     description:
       "숨은 순서도 기반 구조와 한글 표현을 결합해 프로그램의 흐름을 직관적으로 이해하도록 만든 비주얼 프로그래밍 언어입니다. ( •̀ ω •́ )✧",
-    image: "/home/explain.png",
+    image: "home/explain.png",
     variant: "explain",
   },
   {
@@ -43,7 +43,7 @@ const homeSections = [
     cards: [
       {
         title: "스팀 페이지",
-        image: "/logo/SteamLogo.png",
+        image: "logo/SteamLogo.png",
         description:
           "숨의 스팀 판매 홈페이지로 이동합니다.\n숨의 구매 및 업데이트 소식을\n확인할 수 있습니다.",
         path: "https://store.steampowered.com/app/3594080/Suum/",
@@ -51,7 +51,7 @@ const homeSections = [
       },
       {
         title: "숨 유튜브 채널",
-        image: "/logo/YoutubeLogo.png",
+        image: "logo/YoutubeLogo.png",
         description:
           "숨의 공식 유튜브 채널로 이동합니다.\n숨의 강의 영상을 시청 할 수 있습니다.",
         path: "https://www.youtube.com/@suumlang",
@@ -59,7 +59,7 @@ const homeSections = [
       },
       {
         title: "공식 홈페이지",
-        image: "/logo/SuumLogo.png",
+        image: "logo/SuumLogo.png",
         description:
           "숨의 공식 홈페이지로 이동합니다. 자세한 정보 및 업데이트 소식을\n확인 할 수 있습니다.",
         path: "https://suum.pro/",
