@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import EditorBlock from './EditorBlock';
-import { grammarData } from '../../data/GrammarData';
+import { grammarData } from '../../data/grammarData';
 import '../../styles/subpages/grammar/GrammarDetail.css';
 
 export default function GrammarDetail() {
