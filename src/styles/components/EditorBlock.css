@@ -1,0 +1,186 @@
+.editorBlock {
+  max-width: 1160px;
+  margin: 0 auto;
+  background: #111827;
+  color: #d4d4d4;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+.editorTopbar,
+.panelHeader,
+.memberRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.editorTopbar h2 {
+  color: #93c5fd;
+  margin: 4px 0 0;
+}
+
+.windowDots {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.windowDots div {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #64748b;
+}
+
+.windowDots div:first-child {
+  background: #fb7185;
+}
+
+.windowDots div:nth-child(2) {
+  background: #facc15;
+}
+
+.windowDots div:last-child {
+  background: #34d399;
+}
+
+.editorSummary {
+  color: #cbd5e1;
+  margin: 12px 0 18px;
+}
+
+.editorWorkspace {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  min-height: 260px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.editorSidebar {
+  background: #0f172a;
+  border-right: 1px solid #334155;
+  padding: 12px;
+}
+
+.editorSidebar button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 42px;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #94a3b8;
+  font-weight: 800;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.editorSidebar button.active {
+  background: #123b55;
+  border-color: #38bdf8;
+  color: #f8fafc;
+}
+
+.editorPanel {
+  padding: 18px;
+  background: #111827;
+}
+
+.panelHeader {
+  border-bottom: 1px solid #334155;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.panelHeader h3 {
+  color: #e2e8f0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.panelHeader span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.memberList {
+  display: grid;
+  gap: 10px;
+}
+
+.memberRow {
+  justify-content: flex-start;
+  min-height: 40px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: Consolas, Monaco, monospace;
+}
+
+.memberKind {
+  min-width: 48px;
+  color: #111827;
+  background: #e2e8f0;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.memberKind.function {
+  background: #fde68a;
+}
+
+.memberKind.variable {
+  background: #bfdbfe;
+}
+
+.memberKind.rule {
+  background: #99f6e4;
+}
+
+.memberName {
+  color: #dcdcaa;
+}
+
+.memberValue {
+  color: #86efac;
+}
+
+.memberNote,
+.emptyState {
+  color: #94a3b8;
+}
+
+.editorWarnings {
+  margin-top: 14px;
+  border: 1px solid #854d0e;
+  background: #422006;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.editorWarnings p {
+  margin: 0;
+  color: #fde68a;
+}
+
+@media (max-width: 640px) {
+  .editorWorkspace {
+    grid-template-columns: 1fr;
+  }
+
+  .editorSidebar {
+    border-right: 0;
+    border-bottom: 1px solid #334155;
+  }
+}

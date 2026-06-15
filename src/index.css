@@ -1,0 +1,11 @@
+@import "./styles/shared.css";
+
+#root {
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+#root > *:not(.hangulBackground):not(.navbar) {
+  position: relative;
+  z-index: 1;
+}

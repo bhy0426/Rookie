@@ -1,0 +1,139 @@
+.about_page_upper {
+  opacity: 0;
+  transform: translateY(-30px);
+  background-color: magenta;
+}
+
+.about_page {
+  padding: 87px 0 84px;
+  background: transparent;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-property: transform opacity;
+  transition-duration: 1.5s;
+  transition-timing-function: ease;
+}
+
+.about_hero_sticky_area {
+  min-height: calc(1800px + 100vh);
+}
+
+.about_hero_upper {
+  opacity: 0;
+}
+
+.about_hero {
+  position: sticky;
+  top: 87px;
+  min-height: calc(100vh - 87px);
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 48px;
+  align-items: center;
+  padding-top: 30vh;
+  padding-bottom: 30vh;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 2s;
+}
+
+.about_hero h1 {
+  margin: 12px 0 18px;
+  color: var(--suum-text);
+  font-size: clamp(38px, 4vw, 62px);
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+
+.about_hero h1 span {
+  color: var(--suum-accent);
+}
+
+.about_text_box p {
+  color: var(--suum-muted);
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.about_content {
+  margin-top: 200px;
+}
+
+.about_content span {
+  color: var(--suum-accent);
+}
+
+
+.about_text_box h2 {
+  margin: 8px 0 12px;
+  color: var(--suum-text);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 850;
+}
+
+.about_content {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 18px;
+  scroll-margin-top: 70px;
+
+}
+
+.about_img {
+  max-width: 300px;
+  max-height: 200px;
+  margin: auto;
+  color: black;
+  object-fit: cover;
+}
+
+.about_text_box {
+  box-shadow: none;
+}
+
+.about_text_box {
+  padding: 28px;
+}
+
+.about_text_box p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .about_hero,
+  .about_content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .about_page {
+    padding: 36px 0 64px;
+  }
+}
+
+.about_text_box {
+  backdrop-filter: blur(2px);
+}
+
+.about_arrow_hidden {
+  opacity: 0;
+}
+
+.about_arrow_visible {
+  transition-property: opacity;
+  transition-duration: 2s;
+  position: sticky;
+  top: 85vh;
+}
+
+.about_content_hidden {
+  opacity: 0;
+}
+
+.about_content_visible {
+  transition: opacity 2s ease 1s;
+}
