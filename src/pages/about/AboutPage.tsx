@@ -1,7 +1,7 @@
 import "../../styles/pages/AboutPage.css";
 import { useState, useEffect } from "react";
 
-// aboutHero h1 JSX 배열
+// about_hero h1 JSX 배열
 const titles = [
     <>영어가 너무 어려워.. <span>한글</span>로 된 언어는 없을까?</>,
     <>코드를 <span>그림</span>으로 표현할 수는 없을까?</>,
@@ -10,18 +10,18 @@ const titles = [
 
 const AboutPage: React.FC = () => {
   // about_arrow 표시 여부
-  const [isVisibleArrow, setIsVisibleArrow] = useState<Boolean>(false);
+  const [isVisibleArrow, setIsVisibleArrow] = useState<boolean>(false);
 
   // about_content 표시 여부
-  const [isVisibleContent, setIsVisibleContent] = useState<Boolean>(false);
+  const [isVisibleContent, setIsVisibleContent] = useState<boolean>(false);
 
   // 투명 클래스 전환 여부
-  const [isclear, setIsClear] = useState<Boolean>(false);
+  const [isclear, setIsClear] = useState<boolean>(false);
 
   // aboutHero h1 인덱스
-  const [titleIndex, setTitleIndex] = useState(0);
+  const [titleIndex, setTitleIndex] = useState<number>(0);
   
-  // 시작 애니메이션, 컴포넌트를 처음 불러올 때
+  // 시작 애니메이션, 컴포넌트가 처음 마운트 될 때
   useEffect(() => {
     
     // 투명 화면으로 초기화
@@ -38,7 +38,7 @@ const AboutPage: React.FC = () => {
     }, 250);
   }, []);
 
-  // aboutHero h1 스크롤 전환 애니메이션 , 컴포넌트를 처음 불러올 때
+  // about_hero h1 스크롤 전환 애니메이션 , 컴포넌트가 처음 마운트 될 때
   useEffect(() => {
     // 스크롤 시 호출되는 onScroll 함수
     const onScroll = () => {
