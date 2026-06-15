@@ -13,7 +13,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ forceHidden = false }) =>
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [hoveredGroup, setHoveredGroup] = useState(navGroups[0]);
-  const [previewImageIndex, setPreviewImageIndex] = useState(0);
+  const [previewImageIndex, setPreviewImageIndex] = useState<Number>(0);
 
   const navRef = useRef<HTMLElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);

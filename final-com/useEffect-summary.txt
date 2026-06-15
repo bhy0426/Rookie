@@ -1,0 +1,63 @@
+Home.tsx 62번째 useEffect 핵심 요약
+
+1. 역할
+- window의 wheel 이벤트를 감지해서 홈 화면을 섹션 단위로 이동시키는 훅입니다.
+- 일반 스크롤처럼 조금씩 움직이는 것이 아니라, 한 번의 유효한 휠 입력마다 이전/다음 섹션으로 이동하게 만듭니다.
+
+2. 실행 시점
+- Home 컴포넌트가 화면에 렌더링된 뒤 실행됩니다.
+- 실행되면 window.addEventListener("wheel", handleWheel, { passive: false })로 휠 이벤트를 등록합니다.
+- 컴포넌트가 사라질 때는 removeEventListener로 등록한 이벤트를 제거합니다.
+
+3. 휠 방향 판단
+- event.deltaY > 6이면 아래로 스크롤한 것으로 봅니다.
+- event.deltaY < -6이면 위로 스크롤한 것으로 봅니다.
+- 움직임이 너무 작으면 의도하지 않은 입력으로 보고 아무 처리도 하지 않습니다.
+
+4. currentSectionRef를 쓰는 이유
+- window 이벤트 리스너는 React 렌더링 흐름 바깥에서 실행됩니다.
+- 그래서 currentSection state 대신 currentSectionRef.current를 사용해 최신 섹션 번호를 바로 읽습니다.
+
+5. scrollModeRef에 따른 동작
+- free 상태: 홈 섹션 제어를 풀고 브라우저의 기본 스크롤을 허용합니다.
+- relockPending 상태: 다시 locked 상태로 돌아가기 전이라 기본 스크롤만 막고 종료합니다.
+- locked 상태: 기본 스크롤을 막고 홈 내부 섹션 이동을 직접 처리합니다.
+
+6. 마지막 섹션 처리
+- 현재 섹션이 마지막이고 아래로 스크롤하면 scrollModeRef.current를 "free"로 바꿉니다.
+- 이렇게 하면 홈 섹션 이동을 멈추고 페이지의 일반 스크롤 흐름으로 넘어갑니다.
+- 이때 setHomeNavHidden(true)로 홈 네비게이션도 숨깁니다.
+
+7. 기본 스크롤 차단
+- 홈 내부 섹션 이동을 직접 처리할 때는 event.preventDefault()로 브라우저 기본 휠 스크롤을 막습니다.
+- 이 코드가 동작하려면 addEventListener 옵션에 { passive: false }가 필요합니다.
+
+8. 네비게이션 표시 제어
+- 위로 스크롤하면 setHomeNavHidden(false)를 호출해 홈 네비게이션을 보여줍니다.
+- 아래로 스크롤하면 setHomeNavHidden(true)를 호출해 홈 네비게이션을 숨깁니다.
+
+9. wheelLockRef의 역할
+- 휠 이벤트는 한 번 움직여도 여러 번 발생할 수 있습니다.
+- wheelLockRef.current가 true이면 추가 입력을 무시해서 여러 섹션이 한꺼번에 넘어가지 않게 합니다.
+- 섹션 이동이 시작되면 true로 바꾸고, 980ms 후 false로 되돌립니다.
+
+10. 섹션 이동
+- 아래로 스크롤하면 current + 1을 다음 섹션으로 잡습니다.
+- 위로 스크롤하면 current - 1을 다음 섹션으로 잡습니다.
+- currentSectionRef.current를 먼저 갱신하고, setCurrentSection(nextSection)으로 React state도 갱신합니다.
+- currentSection이 바뀌면 다른 useEffect가 실행되어 scrollIntoView로 해당 섹션까지 부드럽게 이동합니다.
+
+전체 흐름
+Home 렌더링
+→ wheel 이벤트 등록
+→ 사용자가 휠 조작
+→ 방향과 현재 섹션 확인
+→ scrollModeRef 상태 확인
+→ 필요하면 기본 스크롤 차단
+→ 네비게이션 표시 상태 변경
+→ wheelLockRef로 중복 입력 방지
+→ 다음 섹션 계산
+→ currentSection 갱신
+→ scrollIntoView로 화면 이동
+→ 980ms 후 휠 잠금 해제
+→ 컴포넌트 언마운트 시 wheel 이벤트 제거

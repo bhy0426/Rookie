@@ -59,34 +59,57 @@ function Home({ setHomeNavHidden }: HomeProps) {
     });
   }, [currentSection]);
 
+  // 마우스 휠 입력을 감지해서 홈 화면을 "섹션 단위 스크롤"로 제어하는 훅입니다.
+  // 컴포넌트가 마운트되면 window에 wheel 이벤트를 등록하고,
+  // 컴포넌트가 언마운트되면 등록했던 이벤트를 제거합니다.
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
+      // currentSection state를 직접 읽지 않고 ref를 읽습니다.
+      // window 이벤트 리스너는 React 렌더링 흐름 바깥에서 실행되므로,
+      // ref를 사용하면 항상 최신 섹션 번호를 안정적으로 참조할 수 있습니다.
       const current = currentSectionRef.current;
+
+      // deltaY가 양수면 아래 방향, 음수면 위 방향 휠 입력입니다.
+      // 아주 작은 움직임은 터치패드 흔들림처럼 의도하지 않은 입력일 수 있어 무시합니다.
       const isScrollDown = event.deltaY > 6;
       const isScrollUp = event.deltaY < -6;
 
+      // 위/아래 어느 쪽으로도 충분히 움직이지 않았다면 아무 처리도 하지 않습니다.
       if (!isScrollDown && !isScrollUp) return;
 
+      // 현재 섹션이 첫 번째인지, 마지막인지 미리 계산합니다.
+      // 첫 번째 섹션에서 위로 이동하거나 마지막 섹션에서 아래로 이동할 때
+      // 별도 예외 처리를 하기 위해 필요합니다.
       const isLastSection = current === totalSections - 1;
       const isFirstSection = current === 0;
 
+      // free 모드는 홈 내부의 섹션 잠금을 푼 상태입니다.
+      // 이때는 브라우저의 기본 스크롤을 그대로 허용합니다.
       if (scrollModeRef.current === "free") {
         return;
       }
 
+      // relockPending은 free 모드에서 다시 locked 모드로 돌아가기 직전의 대기 상태입니다.
+      // 이 짧은 구간에서는 스크롤이 튀지 않도록 기본 스크롤만 막고 종료합니다.
       if (scrollModeRef.current === "relockPending") {
         event.preventDefault();
         return;
       }
 
+      // 마지막 섹션에서 아래로 더 스크롤하면 홈 섹션 제어를 해제합니다.
+      // 이후부터는 페이지의 일반 스크롤 흐름으로 넘어가며, 홈 네비게이션도 숨깁니다.
       if (isScrollDown && isLastSection) {
         scrollModeRef.current = "free";
         setHomeNavHidden(true);
         return;
       }
 
+      // 여기부터는 홈 내부 섹션 이동을 직접 처리해야 하므로
+      // 브라우저의 기본 휠 스크롤을 막습니다.
       event.preventDefault(); // 스크롤 잠금
 
+      // 위로 이동할 때는 홈 네비게이션을 다시 보여주고,
+      // 아래로 이동할 때는 홈 네비게이션을 숨깁니다.
       if (isScrollUp) {
         setHomeNavHidden(false);
       }
@@ -95,22 +118,38 @@ function Home({ setHomeNavHidden }: HomeProps) {
         setHomeNavHidden(true);
       }
 
+      // 휠 이벤트는 한 번의 조작에도 여러 번 발생할 수 있습니다.
+      // 이미 섹션 이동 중이면 추가 입력을 무시해 여러 섹션이 한꺼번에 넘어가는 것을 막습니다.
       if (wheelLockRef.current) return;
+
+      // 첫 번째 섹션에서 위로 스크롤할 경우 이동할 이전 섹션이 없으므로 종료합니다.
       if (isScrollUp && isFirstSection) return;
 
+      // 지금부터 약 1초 동안 추가 섹션 이동을 막습니다.
       wheelLockRef.current = true;
 
+      // 휠 방향에 따라 다음 섹션 번호를 계산합니다.
+      // 아래로 스크롤하면 다음 섹션, 위로 스크롤하면 이전 섹션입니다.
       const nextSection = isScrollDown ? current + 1 : current - 1;
+
+      // ref는 즉시 갱신해서 다음 wheel 이벤트가 최신 값을 보게 하고,
+      // state는 React에 알려 화면 렌더링과 다른 useEffect가 이어서 동작하게 합니다.
       currentSectionRef.current = nextSection;
       setCurrentSection(nextSection);
 
+      // 980ms 뒤 휠 잠금을 해제합니다.
+      // 이 시간 동안 currentSection 변경에 반응하는 다른 useEffect가
+      // scrollIntoView로 해당 섹션까지 부드럽게 이동합니다.
       window.setTimeout(() => {
         wheelLockRef.current = false;
       }, 980);
     };
 
+    // passive: false 옵션을 줘야 handleWheel 안에서 event.preventDefault()가 동작합니다.
     window.addEventListener("wheel", handleWheel, { passive: false });
 
+    // cleanup 함수입니다.
+    // Home 컴포넌트가 사라질 때 전역 wheel 이벤트를 제거해 중복 등록과 메모리 누수를 막습니다.
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
