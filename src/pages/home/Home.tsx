@@ -165,7 +165,7 @@ function Home({ setHomeNavHidden }: HomeProps) {
       window.dispatchEvent(new CustomEvent("mainSectionEvent"));
     }, 100);
   }, [currentSection]);
-
+  
   return (
     <main
       ref={homeRef}
