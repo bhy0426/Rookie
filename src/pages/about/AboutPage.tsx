@@ -87,7 +87,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       <section className={`${isVisibleContent ? "about-content-visible" : "about-content-hidden"}`}>
-        <section className="aboutContent suum-container">
+        <section id="mean" className="aboutContent suum-container">
           <div className="aboutTextBox">
             <h2>숨, 무슨 <span>뜻</span>인가요?</h2>
             <p>
@@ -100,7 +100,7 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="aboutContent suum-container">
+        <section id="feature" className="aboutContent suum-container">
           <div className="aboutTextBox">
             <h2>숨, <span>왜</span> 써야하나요?</h2>
             <p>
@@ -113,7 +113,7 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="aboutContent suum-container">
+        <section id="philosophy" className="aboutContent suum-container">
           <div className="aboutTextBox">
             <h2>숨, <span>어떻게</span> 만들게 되었나요?</h2>
             <p>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { grammarData } from "../../data/GrammarData";
-import type { GrammarItem } from "../../data/GrammarData";
+import { grammarData } from "../../data/grammarData";
+import type { GrammarItem } from "../../data/grammarData";
 
 const categories = ["전체", "프로그램 구성", "객체지향", "제어문", "자료형", "기본 자료형", "참조/할당"];
 
@@ -83,7 +83,7 @@ export default function UsageGrammarBrowser() {
           </div>
         </section>
 
-        <section id="grammar" className="grammarBrowser">
+        <section className="grammarBrowser">
           <div className="browserHeader">
             <div>
               <p className="eyebrow">BROWSE</p>
@@ -115,7 +115,7 @@ export default function UsageGrammarBrowser() {
         </section>
       </section>
 
-      <section className="usagePreviewPanel suum-container">
+      <section id="description" className="usagePreviewPanel suum-container">
         <div className="previewHeader">
           <div>
             <p className="eyebrow">선택한 문법</p>

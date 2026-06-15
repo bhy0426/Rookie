@@ -21,6 +21,7 @@
   scroll-margin-top: 70px;
 }
 
+
 .usageWorkbench {
   height: 500px;
 }
@@ -228,6 +229,7 @@
 
 .usagePreviewPanel {
   padding: 24px;
+  scroll-margin-top: 70px;
 }
 
 .previewHeader {
@@ -237,6 +239,7 @@
   gap: 24px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--suum-border);
+  background-color: magenta;
 }
 
 .previewHeader h2 {
@@ -245,6 +248,7 @@
   font-size: clamp(30px, 4vw, 46px);
   line-height: 1.08;
   letter-spacing: -0.06em;
+  font-weight: 700;
 }
 
 .previewHeader p:not(.eyebrow) {

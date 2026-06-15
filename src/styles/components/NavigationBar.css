@@ -128,7 +128,7 @@
 }
 
 .navbar.expanded .nav-panel {
-  height: 40vh;
+  height: 340px;
   opacity: 1;
   transform: translateY(0);
 }

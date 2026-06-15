@@ -7,10 +7,11 @@ const navGroups = [
               "/nav/about/about2.png",
               "/nav/about/about3.png",
             ],
-    description: "숨의 목적, 특징, 개발 철학을 소개합니다.",
+    description: "숨의 의미, 특징, 개발 철학을 소개합니다.",
     links: [
-      { label: "프로젝트 소개", path: "/about" },
-      { label: "언어 특징", path: "/about" },
+      { label: "의미", path: "/about#mean" },
+      { label: "특징", path: "/about#feature" },
+      { label: "개발 철학", path: "/about#philosophy" },
     ],
   },
   {
@@ -23,7 +24,7 @@ const navGroups = [
     description: "문법 검색, 예시 화면, 상세 설명을 확인합니다.",
     links: [
       { label: "문법 검색", path: "/usage#search" },
-      { label: "문법 목록", path: "/usage#grammar" },
+      { label: "문법 설명", path: "/usage#description" },
     ],
   },
   {
