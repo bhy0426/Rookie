@@ -86,7 +86,7 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
         <section className={`${isVisibleArrow ? "about_arrow_visible" : "about_arrow_hidden"} d-flex justify-content-center align-items-center pt-5 pb-5`}>
-          <img src="about/about_down_arrow.png" />
+          <img src="about/about_img0.png" />
         </section>
       </section>
 
