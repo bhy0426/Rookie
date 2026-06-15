@@ -70,7 +70,7 @@ const AboutPage: React.FC = () => {
     };
     // scroll 이벤트가 발생하면 onScroll 함수 호출
     window.addEventListener("scroll", onScroll);
-    // 컴포넌트가 내려가면
+    // 컴포넌트가 언마운트될 때
     return () => {
       // scroll 이벤트에 등록된 onScroll 함수 제거
       window.removeEventListener("scroll", onScroll);
